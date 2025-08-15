@@ -16,6 +16,18 @@
     <a href="#citation">📜 Citation</a>
 </p>
 
+## Contents
+
+- [Introduction](#introduction)
+- [AutoCodeGen](#autocodegen)
+- [AutoCodeBench](#autocodebench)
+- [Experimental Results](#experimental-results)
+- [Dataset](#data)
+- [Quick Evaluation](#evaluation)
+- [Citation](#citation)
+- [License](#license)
+
+---
 
 ## Introduction
 
@@ -70,7 +82,7 @@ Previous benchmarks mainly focused on Python, with multilingual benchmarks like 
 | :------------: | :------------: |
 | AutoCodeBench  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench.jsonl)   |
 | AutoCodeBench-Lite  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench_lite.jsonl)    |
-| McEval-Instruct  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench_completion_3shot.jsonl)    |
+| AutoCodeBench-Complete  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench_completion_3shot.jsonl)    |
 
 </div>
 
