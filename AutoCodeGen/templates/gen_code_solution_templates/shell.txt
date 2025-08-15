@@ -1,0 +1,125 @@
+# Code Benchmark Construction Task  
+In order to build the code benchmark, I need you to help me create a Shell script function, as well as two test functions. Later, I will construct programming problems based on them.  
+
+## Task Overview  
+Given a code file or code snippet in any programming language, your task is to **refine and evolve its core logic** and remove non-core logic (if necessary) to create a **self-contained**, **verifiable**, **correct** Shell script function. You also need to create two testing functions for testing: `demo_testing()` and `full_testing()`. Below are the detailed requirements:  
+
+1. **Separate Code Blocks**:  
+   - Provide **three distinct code blocks**:  
+     - One block for the rewritten Shell functions that contain the core logic.  
+     - Two blocks for the test functions (`demo_testing()` and `full_testing()`).  
+   - The three code blocks are wrapped with ```sh and ```.  
+
+2. **Test Code in `demo_testing()`**:  
+   - This function should contain **no more than 2 test cases**. It will be used to **demonstrate** the input-output format.  
+   - For each test case, **hard-code the input values** and print both the input and the corresponding output when `demo_testing()` is executed.  
+   - Avoid edge cases in this function, and focus on basic test cases for demonstration purposes.  
+
+3. **Test Code in `full_testing()`**:  
+   - This function should include a comprehensive set of **at least 7 test cases**.  
+   - These test cases should be designed to thoroughly test the functionality of the converted functions, including:  
+     - **Basic cases** (e.g., test cases used in `demo_testing()`).  
+     - **Boundary cases** (e.g., minimum/maximum values, empty inputs).  
+     - **Edge cases** that test the robustness of the code (e.g., abnormal value, boundary condition checks).  
+   - For each test case, **hard-code the input values** and print both the input and the corresponding output when `full_testing()` is executed.  
+   - The goal of the test function is to provide comprehensive inputs and call the function being tested to obtain the output. Input handling should be done by the function itself, not the test.  
+
+4. **Use Shell Tools and Utilities**:  
+   - You are allowed to use standard Shell utilities (e.g., `awk`, `sed`, `bc`) and core commands for implementing the core logic.  
+   - Ensure that all dependencies are clearly explained in the comments if used (e.g., `# Requires bc for floating-point math`).  
+
+5. **Executable Code**:  
+   - Provide **self-contained and executable Shell code** with hard-coded test inputs.  
+   - Remove any non-core logic such as file I/O (unless required for core functionality) and unused functions.  
+   - If the original code is not directly executable, adapt it to a self-contained, testable form by simulating required context or simplifying the logic while preserving core functionality.  
+   - For overly simplistic code, evolve its logic to make it more challenging. For overly complex code, simplify it to be moderately challenging.  
+
+6. **Code Style and Naming**:  
+   - Follow **POSIX-compliant** naming conventions and ensure function/variable names are **descriptive** and **clear**.  
+   - Provide **clear and concise comments** explaining the core logic and purpose of each function.  
+
+## Output Requirements  
+
+### 1. Converted Shell Functions  
+- **Dependencies**: Use standard Shell utilities (e.g., `awk`, `bc`) when necessary.  
+- **Adaptation for Executability**: Modify dependencies on external systems by hardcoding inputs or simulating required context.  
+- **Remove Non-Core Logic**: Eliminate non-essential parts like unused functions or complex I/O.  
+- **Code Style**: Follow Shell scripting best practices (proper quoting, error handling where applicable).  
+
+### 2. Executable Test Functions  
+- **Function Names**: Use `demo_testing()` and `full_testing()` for test functions.  
+- **Inputs**: Hardcode test inputs within the test functions.  
+- **Output**: Print test inputs and outputs using `echo`/`printf` in plaintext format. Ensure outputs are parseable (avoid complex formatting).  
+- **Dependencies**: Use standard Shell utilities for calculations/output formatting.  
+- **Testing Adaptation**: Create self-contained test environments using shell arrays or predefined variables.  
+- **Test Function Format**: Maintain identical structure between `demo_testing()` and `full_testing()`, differing only in test case count.  
+
+### 3. Code Structure  
+```sh  
+#!/bin/bash  
+
+# Function to calculate average of space-separated numbers  
+calculate_average() {  
+    local input="$1"  
+    if [ -z "$input" ]; then  
+        echo "0.00"  
+        return  
+    fi  
+    local sum=$(echo "$input" | awk '{for(i=1;i<=NF;i++) s+=$i} END{print s}')  
+    local count=$(echo "$input" | awk '{print NF}')  
+    echo "$sum $count" | awk '{printf "%.2f\n", $1/$2}'  
+}  
+```  
+
+# demo_testing function  
+```sh  
+demo_testing() {  
+    declare -a test_cases=(  
+        "1 2 3"  
+        "10 20"  
+    )  
+
+    for case in "${test_cases[@]}"; do  
+        echo "Input: $case"  
+        echo "Mean: $(calculate_average "$case")"  
+    done  
+}  
+
+demo_testing  
+```  
+
+# full_testing function  
+```sh  
+full_testing() {  
+    declare -a test_cases=(  
+        "1 2 3"  
+        "12 45 6 89 34"  
+        ""  
+        "5"  
+        "-2 4 -6 8"  
+        "0"  
+        "999 999999999 999999999"  
+        "0.5 9.8 -9.2 25365423435"  
+    )  
+
+    for case in "${test_cases[@]}"; do  
+        echo "Input: $case"  
+        echo "Mean: $(calculate_average "$case")"  
+    done  
+}  
+
+full_testing  
+```  
+
+#### 4. Key Rules  
+- **No external inputs**: All test parameters must be hard-coded.  
+- **Shell compatibility**: Prefer POSIX-compliant syntax unless requiring specific shell features (explicitly note if using Bashisms).  
+- **No randomness**: Ensure deterministic outputs across executions.  
+- **Direct execution**: The script must run with `bash script.sh` or `./script.sh` (with execute permissions).  
+- **Numerical precision**: Use `bc`/`awk` for floating-point operations to ensure consistency.
+
+
+Here is the code file you need to process:
+[Code Start]
+<<<<code>>>>
+[Code End]

@@ -1,0 +1,368 @@
+# Code Benchmark Construction Task
+*In order to build the code benchmark, I need you to help me create a Cpp function, as well as two test functions.*
+
+## Task Overview
+Given a code file or code snippet in any programming language, your task is to **evolve and expand its core logic** to create a **self-contained**, **verifiable**, and **more challenging** Cpp function. You also need to create two testing functions for testing: `demo_testing()` and `full_testing()`. Below are the detailed requirements:
+
+1. **Separate Code Blocks**: 
+   - Provide **three distinct code blocks**:
+     - One block for the rewritten Cpp functions that contain the core logic.
+     - Two blocks for the test functions (`demo_testing()` and `full_testing()`).
+   - The three code blocks are wrapped with ```cpp and ```.
+
+2. **Test Code in `demo_testing()`**: 
+   - This function should contain **no more than 2 test cases**. It will be used to **demonstrate** the input-output format.
+   - For each test case, **hard-code the input values** and print both the input and the corresponding output when `demo_testing()` is executed.
+   - Avoid edge cases in this function, and focus on basic test cases for demonstration purposes.
+
+3. **Test Code in `full_testing()`**: 
+   - This function should include a comprehensive set of **at least 7 test cases**.
+   - These test cases should be designed to thoroughly test the functionality of the converted functions, including:
+     - **Basic cases** (e.g., test cases used in `demo_testing()`).
+     - **Boundary cases** (e.g., minimum/maximum values, empty inputs).
+     - **Edge cases** that test the robustness of the code (e.g., abnormal value, boundary condition checks).
+   - For each test case, **hard-code the input values** and print both the input and the corresponding output when `full_testing()` is executed.
+   - The goal of the test function is to provide comprehensive inputs and call the function being tested to obtain the output. Input handling (e.g., validation, edge cases) should be done by the function itself, not the test.
+
+4. **Use Standard and Third-Party Cpp Libraries**: 
+   - You are allowed to use standard Cpp libraries (e.g., `stdio`, `stdlib`) and third-party libraries (if required) for implementing the core logic.
+   - Ensure that all dependencies are clearly explained in the comments if used.
+
+5. **Executable Code**:
+   - Provide **self-contained and executable Cpp code** with hard-coded test inputs.
+   - Remove any non-core logic such as plots, file I/O, and unused functions. 
+   - If the original code is not directly executable (e.g., due to dependency on specific business logic or external systems), adapt the code to a self-contained, testable form by simulating the required context or simplifying the logic while preserving the core functionality.
+   - The code must have a sufficient level of complexity. For basic examples (like a function that simply adds two numbers), you should enhance it to include greater complexity and make it more challenging.
+
+6. **Code Style and Naming**:
+   - Follow **Cpp** naming conventions and ensure that function names are **descriptive** and **clear** in conveying their purpose.
+   - Provide **clear and concise comments** explaining the core logic and the purpose of each function, especially the key steps.
+
+
+## Output Requirements  
+
+### 1. Converted Cpp Functions
+- **Dependencies**: Use standard Cpp libraries (e.g., stdio) and third-party libraries when necessary.
+- **Adaptation for Executability**: If the original code depends on external data sources or specific business workflows, modify it to be self-contained by hardcoding inputs, simulating dependencies, or simplifying the logic, while preserving the core algorithm.
+- **Remove Non-Core Logic**: Eliminate all non-essential parts such as plots, file I/O, and unused functions.
+- **Code Style**: Follow good Cpp coding practices, including proper indentation, consistent naming conventions, and adherence to PEP 8 guidelines. Add comments to explain the functionality of the code and clarify key steps.
+- **Not to stick to one pattern**: Not bound by the logic of the given code snippet. Carrying out evolution and expansion makes the code more challenging.
+
+
+### 2. Executable Test Functions
+- **Function Names**: Use `demo_testing()` and `full_testing()` for the test functions.
+- **Inputs**: Hardcode the test inputs within the test functions. Do not pass parameters into the `demo_testing()` or `full_testing()` functions.
+- **Output**: Directly print the test inputs and their corresponding outputs to the console. Ensure that outputs are in JSON-serializable types (e.g., strings, integers, floats, lists). Do not include the word "Output" in the printed results.
+- **Dependencies**: Use standard Cpp libraries (e.g., stdio, stdlib) and third-party libraries, if needed, for the core logic.
+- **Testing Adaptation**: If the original code's logic is part of a larger system, adapt the `demo_testing()` and `full_testing()` functions to create a self-contained testing environment. This may include initializing necessary objects, setting up test data, or mocking external interactions.
+- **Code Style**: Follow good Cpp code style in the test functions, with proper indentation and clarity. Include comments to explain the test setup and key steps in the testing process.
+- **Test Function Format**: The structure and format of `demo_testing()` and `full_testing()` should be identical, with the only difference being the number of test cases.
+
+### 3. Code Structure  
+```cpp  
+// Converted cpp functions
+#include <vector>
+#include <iostream>
+using namespace std;
+#include <third_party_library.h> // Example: If third - party libraries are needed  
+
+// 计算给定数据列表的平均值
+// 如果列表为空，返回0.0以避免除零错误
+double calculate_average(const vector<double>& data) {
+    if (data.empty()) {
+        return 0.0;
+    }
+    double total = 0.0;
+    for (double value : data) {
+        total += value;
+    }
+    return total / data.size();
+}
+```
+
+```cpp  
+// demo_testing function 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void demo_testing() {
+    // 硬编码测试输入。我们创建一个不超过2个测试用例的列表，其中每个测试用例
+    // 本身是一个用于测试calculate_average函数的数字列表。
+    vector<vector<int>> test_cases = {
+        {1, 2, 3}
+    };
+
+    for (const auto& input_data : test_cases) {
+        // 打印当前测试用例的输入数据
+        cout << "Input: [";
+        for (size_t i = 0; i < input_data.size(); ++i) {
+            cout << input_data[i];
+            if (i < input_data.size() - 1) {
+                cout << ", ";
+            }
+        }
+        cout << "]" << endl;
+
+        // 使用当前输入数据调用calculate_average函数
+        double result = calculate_average(input_data);
+
+        // 打印当前测试用例计算的结果（平均值）
+        cout << "Mean: " << result << endl;
+    }
+}
+
+int main() {
+    demo_testing();
+    return 0;
+}
+```
+
+```cpp  
+// full_testing function 
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void full_testing() {
+    // 硬编码测试输入。我们创建一个至少包含7个测试用例的列表，其中每个测试用例
+    // 本身是一个用于测试calculate_average函数的数字列表。
+    vector<vector<double>> test_cases = {
+        {1, 2, 3},
+        {12, 45, 6, 89, 34},
+        {},  // 空向量测试用例
+        {5},  // 单元素测试用例
+        {-2, 4, -6, 8},  // 负数测试用例
+        {0},
+        {999, 999999999, 999999999},  // 极值测试用例
+        {0.5, 9.8, -9.2, 25365423435.0}  // 小数测试用例
+    };
+
+
+    for (const auto& input_data : test_cases) {
+        // 打印当前测试用例的输入数据
+        cout << "Input: [";
+        for (size_t i = 0; i < input_data.size(); ++i) {
+            cout << input_data[i];
+            if (i < input_data.size() - 1) {
+                cout << ", ";
+            }
+        }
+        cout << "]" << endl;
+
+        // 使用当前输入数据调用calculate_average函数
+        double result = calculate_average(input_data);
+
+        // 打印当前测试用例计算的结果（平均值）
+        cout << "Mean: " << result << endl << endl;
+    }
+}
+
+int main() {
+    full_testing();
+    return 0;
+}
+```  
+
+#### 3. Key Rules  
+- **No external inputs**: All test parameters should be hard-coded in the demo_testing or full_testing function.  
+- **No complex types**: Use lists for arrays and primitive types for scalars. 
+- **No exception handling**: Do not generate code to catch the exception. (i.e. do not use "try" "catch"). 
+- **No boilerplate**: Remove comments, unused code, and non-essential logic from the original code (but add appropriate comments in the generated Cpp code as per the requirements).
+- **No randomness**: The code must not rely on any random values or functions. Ensure that all inputs and outputs are predictable and consistent every time the code is executed.
+- **Direct execution**:  The code must be able to be directly compiled into a main executable program and run as "./main".
+
+
+### Example Conversion  
+**Original Code** (in any programming language, here a hypothetical example using Pandas):  
+```python
+import pandas as pd  
+def analyze_data(df):  
+    return df.mean(), df.std()  
+data = pd.DataFrame([1, 2, 3, 4])  
+print(analyze_data(data))  # Output: (2.5, 1.118...)  
+```  
+
+**Converted Cpp Code** (**evolving and expanding** the core logic):  
+```cpp  
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <algorithm>
+#include <stdexcept>
+#include <map>
+
+using namespace std;
+
+// 函数用于对向量进行多种统计分析
+map<string, double> analyze_data(const vector<double>& data) {
+    // 检查向量是否为空
+    if (data.empty()) {
+        throw invalid_argument("Error: Empty DataFrame");
+    }
+
+    // 计算总和
+    double sum = 0.0;
+    for (double value : data) {
+        sum += value;
+    }
+
+    // 计算均值
+    double mean = sum / data.size();
+
+    // 计算方差和标准差
+    double variance = 0.0;
+    for (double value : data) {
+        variance += pow(value - mean, 2);
+    }
+    variance /= data.size() - 1; // 无偏估计
+    double std_dev = sqrt(variance);
+
+    // 计算中位数
+    vector<double> sorted_data = data;
+    sort(sorted_data.begin(), sorted_data.end());
+    double median;
+    if (sorted_data.size() % 2 == 0) {
+        median = (sorted_data[sorted_data.size()/2 - 1] + sorted_data[sorted_data.size()/2]) / 2;
+    } else {
+        median = sorted_data[sorted_data.size()/2];
+    }
+
+    // 检测离群值（超过均值2个标准差）
+    vector<double> outliers;
+    for (double value : data) {
+        if (abs(value - mean) > 2 * std_dev) {
+            outliers.push_back(value);
+        }
+    }
+
+    // 返回结果字典
+    map<string, double> results;
+    results["mean"] = mean;
+    results["std_dev"] = std_dev;
+    results["median"] = median;
+    results["variance"] = variance;
+    // 注意：C++ map要求所有值类型一致，因此outliers无法直接包含在这里
+    
+    return results;
+}
+
+```  
+
+**Demo Testing Function** (Adapted to create DataFrames in-memory):  
+```cpp  
+#include <iostream>
+#include <vector>
+#include <map>
+using namespace std;
+
+void demo_testing() {
+    vector<vector<double>> test_cases = {
+        {1, 2, 3, 4}
+    };
+
+    for (const auto& input_data : test_cases) {
+        // 模拟DataFrame输出格式
+        cout << "Input:" << endl;
+        cout << "+---+--------+" << endl;
+        cout << "|   |   0    |" << endl;
+        cout << "+---+--------+" << endl;
+        for (size_t i = 0; i < input_data.size(); ++i) {
+            cout << "| " << i << " | " 
+                 << setw(6) << input_data[i] << " |" << endl;
+        }
+        cout << "+---+--------+" << endl;
+
+        map<string, double> result = analyze_data(input_data);
+
+        // 优化结果输出格式
+        cout << "Analysis Result:" << endl;
+        cout << "+------------+-----------+" << endl;
+        cout << "| Statistic  |   Value   |" << endl;
+        cout << "+------------+-----------+" << endl;
+        for (const auto& pair : result) {
+            cout << "| " << left << setw(10) << pair.first 
+                    << " | " << right << setw(9) << pair.second << " |" << endl;
+        }
+        cout << "+------------+-----------+" << endl;
+        
+        cout << endl;
+    }
+}
+
+int main() {
+    demo_testing();
+    return 0;
+}
+```
+
+**Full Testing Function** (Adapted to create DataFrames in-memory):  
+```cpp
+#include <iostream>
+#include <vector>
+#include <map>
+using namespace std;
+
+void full_testing() {
+    // 硬编码测试用例集合
+    vector<vector<double>> test_cases = {
+        {1, 2, 3, 4},                 // 测试用例1：简单数字序列
+        {12, 45, 6, 89, 34},          // 测试用例2：更多数字
+        {5},                          // 测试用例3：单个值
+        {},                           // 测试用例4：空DataFrame
+        {1, -1, 1, -1},               // 测试用例5：正负混合
+        {0, 0, 0, 0},                 // 测试用例6：全零
+        {999999, 1000000, 1000001},  // 测试用例7：大数
+        {100, 200, 300, 400}         // 测试用例8：更大的数字集
+    };
+
+    // 设置输出精度
+    cout << fixed << setprecision(6);
+
+    for (size_t i = 0; i < test_cases.size(); ++i) {
+        const auto& input_data = test_cases[i];
+        
+        // 打印测试用例编号
+        cout << "Test Case " << (i + 1) << ":" << endl;
+        
+        // 模拟DataFrame输出格式
+        cout << "Input:" << endl;
+        cout << "+---+--------+" << endl;
+        cout << "|   |   0    |" << endl;
+        cout << "+---+--------+" << endl;
+        for (size_t j = 0; j < input_data.size(); ++j) {
+            cout << "| " << j << " | " 
+                 << setw(6) << input_data[j] << " |" << endl;
+        }
+        cout << "+---+--------+" << endl;
+
+        // 调用分析函数
+        map<string, double> result = analyze_data(input_data);
+
+        // 输出分析结果
+        cout << "Analysis Result:" << endl;
+        cout << "+------------+-----------+" << endl;
+        cout << "| Statistic  |   Value   |" << endl;
+        cout << "+------------+-----------+" << endl;
+        for (const auto& pair : result) {
+            cout << "| " << left << setw(10) << pair.first 
+                    << " | " << right << setw(9) << pair.second << " |" << endl;
+        }
+        cout << endl; // 分隔不同测试用例
+    }
+
+}
+
+int main() {
+    full_testing();
+    return 0;
+}
+
+```  
+
+
+
+Here is the code file you need to process:
+[Code Start]
+<<<<code>>>>
+[Code End]

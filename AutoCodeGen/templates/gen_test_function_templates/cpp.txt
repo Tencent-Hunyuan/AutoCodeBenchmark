@@ -1,0 +1,124 @@
+I'll provide you with a C++ code, a test function call (including inputs) that uses this C++ function, and the test output obtained after executing that test function call.
+
+Please combine the provided inputs and outputs into assert statements, and place these `assert` statements inside a new `test` function. You can only use the inputs and outputs provided by me. Please do not create your own or modify the test cases.
+
+Here is an example:
+**Code**:
+```cpp
+#include <cmath>
+#include <cassert>
+
+bool is_prime(int n) {
+    if (n < 2) {
+        return false;
+    }
+    for (int i = 2; i <= std::sqrt(n); ++i) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int nth_prime(int n) {
+    if (n < 1) {
+        return -1; // Using -1 as error code for invalid input
+    }
+    int count = 1;
+    int i = 2;
+    while (count < n) {
+        ++i;
+        if (is_prime(i)) {
+            ++count;
+        }
+    }
+    return i;
+}
+```
+
+**Test Cases**:
+```cpp
+#include <iostream>
+
+void main_test() {
+    // Hard-coded test inputs
+    int test_cases[] = {1, 5, 10, 100, 10001};
+
+    for (int n : test_cases) {
+        // Print the input
+        std::cout << "Input: " << n << std::endl;
+
+        // Core logic
+        int result = nth_prime(n);
+
+        // Output
+        std::cout << "The " << n << "th prime number is: " << result << std::endl;
+    }
+}
+
+int main() {
+    main_test();
+    return 0;
+}
+```
+
+**Test Case Results**:
+```
+Input: 1
+The 1th prime number is: 2
+Input: 5
+The 5th prime number is: 11
+Input: 10
+The 10th prime number is: 29
+Input: 100
+The 100th prime number is: 541
+Input: 10001
+The 10001th prime number is: 104743
+```
+
+Based on the above information, the generated `assert` statements should be placed in a new `test` function. Below are the detailed requirements: 
+1. The code should include all the library used.
+2. Do not generate code to catch the exception. (i.e. do not use "try" "catch")
+3. If necessary, declare the namespace before the test function.(such as using namespace std)
+The test function should be like this:
+```cpp
+#include <cassert>
+#include <string>
+using namespace std;
+
+void test() {
+    string a = "1234";
+    assert(nth_prime(1) == 2);
+    assert(nth_prime(5) == 11);
+    assert(nth_prime(10) == 29);
+    assert(nth_prime(100) == 541);
+    assert(nth_prime(10001) == 104743);
+}
+
+int main() {
+    test();
+    return 0;
+}
+```
+
+Here is the data you need to process. Please place the function named `test` that you need to generate two code blocks enclosed by ```cpp and ```. Place demo and full in two separate code blocks, not in the same code block.
+
+[Code Start]
+<<<<code>>>>
+[Code End]
+
+[Test Function Call 1 Start]
+<<<<test cases>>>>
+[Test Function Call 1 End]
+
+[Test Case Results 1 Start]
+<<<<test case results>>>>
+[Test Case Results 1 End]
+
+[Test Function Call 2 Start]
+<<<<test cases2>>>>
+[Test Function Call 2 End]
+
+[Test Case Results 2 Start]
+<<<<test case results2>>>>
+[Test Case Results 2 End]

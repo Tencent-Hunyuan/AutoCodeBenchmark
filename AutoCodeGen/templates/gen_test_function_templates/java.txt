@@ -1,0 +1,127 @@
+I'll provide you with a Java code, a test function call (including inputs) that uses this Java method, and the test output obtained after executing that test function call.
+
+Please combine the provided inputs and outputs into assert statements, and place these `assert` statements inside a new `test` method. You can only use the inputs and outputs provided by me. Please do not create your own or modify the test cases.
+
+Here is an example:
+**Code**:
+```java
+import java.util.List;  
+import java.util.Arrays;  
+import java.util.HashMap;  
+import java.util.Map;  
+
+class PrimeUtils {
+    public boolean isPrime(int n) {
+        if (n < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(n); ++i) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int nthPrime(int n) {
+        if (n < 1) {
+            return -1; // Using -1 as error code for invalid input
+        }
+        int count = 1;
+        int i = 2;
+        while (count < n) {
+            ++i;
+            if (isPrime(i)) {
+                ++count;
+            }
+        }
+        return i;
+    }
+}
+```
+
+**Test Cases**:
+```java
+import java.util.List;  
+import java.util.Arrays;  
+import java.util.HashMap;  
+import java.util.Map;  
+import org.junit.jupiter.api.Test;
+
+class DemoTest {
+    @Test
+    public void demoTesting(String[] args) {
+        // Hard-coded test inputs
+        int[] testCases = {1, 5, 10, 100, 10001};
+
+        for (int n : testCases) {
+            // Print the input
+            System.out.println("Input: " + n);
+
+            // Core logic
+            int result = PrimeUtils.nthPrime(n);
+
+            // Output
+            System.out.println("The " + n + "th prime number is: " + result);
+        }
+    }
+}
+```
+
+**Test Case Results**:
+```
+Input: 1
+The 1th prime number is: 2
+Input: 5
+The 5th prime number is: 11
+Input: 10
+The 10th prime number is: 29
+Input: 100
+The 100th prime number is: 541
+Input: 10001
+The 10001th prime number is: 104743
+```
+
+Based on the above information, the generated `assert` statements should be placed in a new `test` method. Below are the detailed requirements: 
+1. The code should include all the necessary imports.
+2. Do not generate code to catch exceptions. (i.e., do not use `try`-`catch` blocks.)
+3. If necessary, use static imports for assertions, you must use JUnit package (e.g., `import static org.junit.jupiter.api.Assertions.*;`).
+
+The test method should be like this:
+```java
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+class TestPrimeUtils {
+    @Test
+    public void test() {
+        assertEquals(2, PrimeUtils.nthPrime(1));
+        assertEquals(11, PrimeUtils.nthPrime(5));
+        assertEquals(29, PrimeUtils.nthPrime(10));
+        assertEquals(541, PrimeUtils.nthPrime(100));
+        assertEquals(104743, PrimeUtils.nthPrime(10001));
+    }
+}
+```
+
+Here is the data you need to process. Please place the function that you need to generate two code blocks enclosed by ```java and ```. Place demo and full in two separate code blocks, not in the same code block.
+
+[Code Start]
+<<<<code>>>>
+[Code End]
+
+[Test Function Call 1 Start]
+<<<<test cases>>>>
+[Test Function Call 1 End]
+
+[Test Case Results 1 Start]
+<<<<test case results>>>>
+[Test Case Results 1 End]
+
+[Test Function Call 2 Start]
+<<<<test cases2>>>>
+[Test Function Call 2 End]
+
+[Test Case Results 2 Start]
+<<<<test case results2>>>>
+[Test Case Results 2 End]

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FSharp.Core</id>
+    <version>8.0.102</version>
+    <authors>Microsoft</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <icon>Icon.png</icon>
+    <projectUrl>https://github.com/dotnet/dotnet</projectUrl>
+    <description>FSharp.Core redistributables from F# Tools version 12.8.102 For F# 8.0.  Contains code from the F# Software Foundation.</description>
+    <releaseNotes>https://github.com/dotnet/dotnet/blob/main/release-notes.md#FSharp-Core-8-0-102</releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>en-US</language>
+    <tags>Visual F# Compiler FSharp functional programming</tags>
+    <serviceable>true</serviceable>
+    <repository type="Git" url="https://github.com/dotnet/dotnet" commit="fc5e9eda234e2b69aa479f4f83faddc31fdd4da7" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0" />
+      <group targetFramework=".NETStandard2.1" />
+    </dependencies>
+  </metadata>
+</package>

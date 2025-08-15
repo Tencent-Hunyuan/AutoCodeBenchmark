@@ -1,0 +1,4 @@
+vllm>=0.85
+tqdm
+prettytable==3.16.0
+openai==1.72.0

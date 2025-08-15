@@ -1,0 +1,155 @@
+You are an experienced programming master with expertise in multiple languages, particularly in Scala. I will provide 
+you with:
+
+1. A code generation problem description (including requirements, constraints, and examples)
+2. The reference solution code (in another language, typically Python/Java/C++/Go/JavaScript/Shell)
+3. Corresponding test cases functions include demo test cases and full test cases
+
+Your task is to:
+
+1. Accurately translate the problem description into clear English while preserving all technical details. Please emphasize that the problem needs to be solved using Scala。
+2. Convert the reference solution into idiomatic Scala code that:
+   - Follows Scala  conventions
+   - Uses appropriate data structures from Scala's standard library
+   - Follows Scala's naming conventions
+3. Translate the test cases into Scala's testing framework:
+   - Maintaining the same test coverage as original
+   - You must call demo_test or full_test to test the case. Please DO NOT use main func.
+
+Additional requirements:
+- For algorithm problems, maintain the same time/space complexity
+- For system design problems, use appropriate Scala crates
+- Include necessary documentation (/// comments) explaining key decisions
+- Do not redefine the function in the test cases
+- Do not import external file or library
+
+Example:
+
+[problem]
+Given an array of integers nums and an integer target, find the two numbers in the array that sum up to the target and return their indices.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+Example:
+Given nums = [2, 7, 11, 15], target = 9
+Because nums[0] + nums[1] = 2 + 7 = 9
+Return [0, 1]
+
+Note: The solution needs to be implemented in Python.
+[problem end]
+
+[reference solution]
+def two_sum(nums, target):
+    hashmap = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in hashmap:
+            return [hashmap[complement], i]
+        hashmap[num] = i
+    return []
+[reference solution end]
+
+[demo test case]
+def demo_test():
+    assert two_sum([2, 7, 11, 15], 9) == [0,1]
+    assert two_sum([3, 2, 4], 6) == [1,2]
+    print("All tests passed!")
+demo_test()
+[demo test case end]
+
+[full test case]
+def full_test():
+    assert two_sum([3, 3], 6) == [0,1]
+    assert two_sum([10, 20, 30, 40, 50], 90) == [3,4]
+    assert two_sum([-1, -2, -3, -4], -7) == [2,3]
+    print("All tests passed!")
+full_test()
+[full test case end]
+
+Your answer should be like:
+<translated_problem>
+Given an array of integers nums and an integer target, find the two numbers in the array that sum up to the target and return their indices.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+Example:
+Given nums = [2, 7, 11, 15], target = 9
+Because nums[0] + nums[1] = 2 + 7 = 9
+Return [0, 1]
+
+Note: The solution needs to be implemented in Scala.
+</translated_problem>
+
+<translated_reference_solution>
+```scala
+object Solution {
+  /// Finds two numbers in `nums` that sum up to `target` and returns their indices
+  /// Uses a HashMap to store seen values and their indices for O(1) lookups
+  /// Time Complexity: O(n), Space Complexity: O(n)
+  def twoSum(nums: Array[Int], target: Int): Array[Int] = {
+    val seen = scala.collection.mutable.HashMap[Int, Int]()
+    
+    for ((num, i) <- nums.zipWithIndex) {
+      val complement = target - num
+      if (seen.contains(complement)) {
+        return Array(seen(complement), i)
+      }
+      seen.put(num, i)
+    }
+    
+    Array.empty[Int]
+  }
+}
+```
+</translated_reference_solution>
+
+<demo_test_cases>
+```scala
+def demo_test(): Unit = {
+  // Basic test case
+  assert(Solution.twoSum(Array(2, 7, 11, 15), 9).sameElements(Array(0, 1)))
+  
+  // Numbers not at beginning
+  assert(Solution.twoSum(Array(3, 2, 4), 6).sameElements(Array(1, 2)))
+  println("All tests passed!")
+}
+
+demo_test()
+```
+</demo_test_cases>
+
+<full_test_cases>
+```scala
+def full_test(): Unit = {
+  // Duplicate values
+  assert(Solution.twoSum(Array(3, 3), 6).sameElements(Array(0, 1)))
+  
+  // Larger array
+  assert(Solution.twoSum(Array(10, 20, 30, 40, 50), 90).sameElements(Array(3, 4)))
+  
+  // Negative numbers
+  assert(Solution.twoSum(Array(-1, -2, -3, -4), -7).sameElements(Array(2, 3)))
+  
+  println("All tests passed!")
+}
+
+full_test()
+```
+</full_test_cases>
+
+Here is the problem, reference solution and test case
+[problem]
+<<<problem>>>
+[problem end]
+
+[reference solution]
+<<<code>>>
+[reference solution end]
+
+[demo test case]
+<<<demo_test>>>
+[demo test case end]
+
+[full test case]
+<<<full_test>>>
+[full test case end]

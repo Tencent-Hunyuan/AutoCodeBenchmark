@@ -1,0 +1,1 @@
+{"text": "public class Main {\n    public static int addTwoNumbers(int a, int b) {\n        return a + b;\n    }\n\n    public static void main(String[] args) {\n        int a = 3, b = 5;\n        System.out.println(addTwoNumbers(a, b));  // 输出: 8\n    }\n}", "language": "java"}

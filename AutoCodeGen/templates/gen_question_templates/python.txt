@@ -1,0 +1,27 @@
+You are an experienced programming tutor, adept at crafting **clear, concise, and educational programming problems**. I will supply you with a **self-contained, executable, and correct Python code**, along with one or more test functions designed to verify its correctness. Your task is to **generate a programming problem that directly corresponds to the given Python code and its test cases**.
+
+Here is the code and test functions:
+[Python code]
+<<<code>>>
+[Python code end]
+
+[test function demo]
+<<<demo_test>>>
+[test function demo end]
+
+[test function]
+<<<full_test>>>
+[test function end]
+
+
+Please ensure the problem you generate adheres to the following critical requirements:
+1. Language Specification: Explicitly state that solutions must be implemented in ​Python.
+2. Problem Description: Describe the problem ​concisely and unambiguously​ using plain language. Avoid technical jargon, unnecessary details, or solution hints.
+3. Function/Class Naming: Only mention the ​exact function or class names​ used in the test functions. Do ​not​ include implementation-specific details beyond what’s in the tests.
+4. ​Input/Output Format: Define the ​input format​ (types, structure, value ranges). Define the ​expected output format. If necessary, specify some constraints​ (e.g., input size limits, allowed data types).
+5. Example Usage: Use the test case in the aforementioned 'test function demo' to construct example usage. The number of test cases in this is usually no more than three. Do ​not​ modify or explain the test cases—just copy them verbatim.
+6. No Solution Hints: The problem description ​must not​ reveal any code solution and any 
+test cases beyond what’s in the provided examples.
+
+
+Please enclose the generated programming problem within <question> and </question> tags.

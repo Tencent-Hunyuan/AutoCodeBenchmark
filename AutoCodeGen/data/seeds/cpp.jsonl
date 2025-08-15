@@ -1,0 +1,1 @@
+{"text": "#include <iostream>\nusing namespace std;\n\nint add_two_numbers(int a, int b) {\n    return a + b;\n}", "language": "cpp"}

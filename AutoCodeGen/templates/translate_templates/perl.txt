@@ -1,0 +1,113 @@
+You are an experienced programming master with expertise in multiple languages, particularly in Perl. I will provide 
+you with:
+
+1. A code generation problem description (including requirements, constraints, and examples)
+2. The reference solution code (in another language, typically Python/Java/C++/Go/JavaScript/Shell)
+3. Corresponding test cases functions include demo test cases and full test cases
+
+Your task is to:
+
+1. Accurately translate the problem description into clear English while preserving all technical details. Please emphasize that the problem needs to be solved using Perl。
+2. Convert the reference solution into idiomatic Perl code that:
+   - Follows Perl  conventions
+   - Uses appropriate data structures from Perl's standard library
+   - Follows Perl's naming conventions
+3. Translate the test cases into Perl's testing framework:
+   - Maintaining the same test coverage as original
+   - just call the test case in main function, do not use unit test library.
+
+Additional requirements:
+- For algorithm problems, maintain the same time/space complexity
+- For system design problems, use appropriate Perl crates
+- Include necessary documentation (/// comments) explaining key decisions
+- Do not redefine the function in the test cases
+- Do not import external file or library
+
+Example:
+
+[problem]
+Write a function count_vowels that takes a string and returns the number of vowels (a, e, i, o, u) in the string, case-insensitive. The input will only contain alphabetic characters.
+[problem end]
+
+[reference solution]
+def count_vowels(s):
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+    return sum(1 for char in s.lower() if char in vowels)
+[reference solution end]
+
+[demo test case]
+def test_count_vowels():
+    assert count_vowels("Hello") == 2
+    assert count_vowels("AEIOU") == 5
+    print("All tests passed!")
+test_count_vowels()
+[demo test case end]
+
+[full test case]
+def test_count_vowels():
+    assert count_vowels("Python") == 1
+    assert count_vowels("") == 0
+    assert count_vowels("zzz") == 0
+    print("All tests passed!")
+test_count_vowels()
+[full test case end]
+
+Your answer should be like:
+<translated_problem>
+Write a Perl function count_vowels that accepts a string and returns the count of vowels (a, e, i, o, u) in the string. The comparison should be case-insensitive. You may assume the input contains only alphabetic characters. The solution must be implemented in Perl.
+</translated_problem>
+
+<translated_reference_solution>
+```perl
+sub count_vowels {
+    my ($s) = @_;
+    my %vowels = (a => 1, e => 1, i => 1, o => 1, u => 1);
+    my $count = 0;
+    foreach my $char (split //, lc $s) {
+        $count++ if exists $vowels{$char};
+    }
+    return $count;
+}
+```
+</translated_reference_solution>
+
+<demo_test_cases>
+```perl
+use Test::More;
+
+is(count_vowels("Hello"), 2, "Basic test");
+is(count_vowels("AEIOU"), 5, "All vowels uppercase");
+
+done_testing();
+your code
+```
+</demo_test_cases>
+
+<full_test_cases>
+```perl
+use Test::More;
+
+is(count_vowels("Python"), 1, "Single vowel");
+is(count_vowels(""), 0, "Empty string");
+is(count_vowels("zzz"), 0, "No vowels");
+
+done_testing();
+```
+</full_test_cases>
+
+Here is the problem, reference solution and test case
+[problem]
+<<<problem>>>
+[problem end]
+
+[reference solution]
+<<<code>>>
+[reference solution end]
+
+[demo test case]
+<<<demo_test>>>
+[demo test case end]
+
+[full test case]
+<<<full_test>>>
+[full test case end]

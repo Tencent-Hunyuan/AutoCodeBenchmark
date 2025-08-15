@@ -1,0 +1,65 @@
+{
+  "format": 1,
+  "restore": {
+    "/data/codes/c#/dotnet/f#/MyProject/MyProject.fsproj": {}
+  },
+  "projects": {
+    "/data/codes/c#/dotnet/f#/MyProject/MyProject.fsproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/data/codes/c#/dotnet/f#/MyProject/MyProject.fsproj",
+        "projectName": "MyProject",
+        "projectPath": "/data/codes/c#/dotnet/f#/MyProject/MyProject.fsproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/data/codes/c#/dotnet/f#/MyProject/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/root/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/usr/share/dotnet/sdk/8.0.100/FSharp/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "FSharp.Core": {
+              "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
+              "target": "Package",
+              "version": "[8.0.100, )",
+              "generatePathProperty": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

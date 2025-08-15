@@ -1,0 +1,118 @@
+我将为你提供一个go代码、一个使用该go函数的测试函数调用（包括输入），以及执行该测试函数调用后得到的测试输出。
+请改写该测试函数，将提供的输入和输出组合成单元测试函数。请特别注意以下要求：
+(1) 不要改变测试用例：你只能使用我提供的输入和输出，请不要创建自己的或修改测试用例。
+(2) 不要修改测试函数的名字：使用测试用例中的函数名,只能是TestDemo和TestFull两个中的一个
+(3) 不要实现main函数：特别注意不要在代码里生成main函数
+(4) 依赖项：测试函数新增的go标准库（如math）和第三方库（如果需要）需要显示导入
+
+
+以下是一个示例：
+[代码开始]
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+// 判断素数函数
+func isPrime(n int) bool {
+	if n < 2 {
+		return false
+	}
+	for i := 2; i <= int(math.Sqrt(float64(n))); i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+// 查找第n个素数
+func nthPrime(n int) int {
+	if n < 1 {
+		return -1 // Go中常用-1表示无效结果
+	}
+	count := 0
+	num := 1
+	for count < n {
+		num++
+		if isPrime(num) {
+			count++
+		}
+	}
+	return num
+}
+```
+[代码结束]
+
+[测试用例开始]:
+```go
+import (
+	"fmt"
+	"math"
+)
+// 测试函数
+func demoTesting() {
+	testCases := []int{1, 5, 10, 100, 10001}
+	for _, n := range testCases {
+		fmt.Printf("Input: %d\n", n)
+		result := nthPrime(n)
+		fmt.Printf("The %dth prime number is: %d\n", n, result)
+	}
+}
+```
+[测试用例结束]
+
+[测试用例结果开始]:
+```
+'Input: 1\nThe 1th prime number is: 2\nInput: 5\nThe 5th prime number is: 11\nInput: 10\nThe 10th prime number is: 29\nInput: 100\nThe 100th prime number is: 541\nInput: 10001\nThe 10001th prime number is: 104743'
+```
+[测试用例结果结束]
+
+根据以上信息，生成的assert语句应放入一个新的test函数中，如下所示：
+```go
+import "testing"
+
+func TestDemo(t *testing.T) {
+	if nthPrime(1) != 2 {
+		t.Error("Expected 2 for n=1")
+	}
+	if nthPrime(5) != 11 {
+		t.Error("Expected 11 for n=5")
+	}
+	if nthPrime(10) != 29 {
+		t.Error("Expected 29 for n=10")
+	}
+	if nthPrime(100) != 541 {
+		t.Error("Expected 541 for n=100")
+	}
+	if nthPrime(10001) != 104743 {
+		t.Error("Expected 104743 for n=10001")
+	}
+}
+```
+
+Here is the data that needs to be processed. Please generate the Go code and place the test functions you need to generate within code blocks surrounded by ```go and ```, using the test syntax in that language. Please remember do not change the test function names. The new generated test function names should only be TestDemo or TestFull. Place TestDemo and TestFull in two separate code blocks, not in the same code block.
+
+
+[Code Start]
+<<<<code>>>>
+[Code End]
+
+[Test Function Call 1 Start]
+<<<<test cases>>>>
+[Test Function Call 1 End]
+
+[Test Case Results 1 Start]
+<<<<test case results>>>>
+[Test Case Results 1 End]
+
+[Test Function Call 2 Start]
+<<<<test cases2>>>>
+[Test Function Call 2 End]
+
+[Test Case Results 2 Start]
+<<<<test case results2>>>>
+[Test Case Results 2 End]

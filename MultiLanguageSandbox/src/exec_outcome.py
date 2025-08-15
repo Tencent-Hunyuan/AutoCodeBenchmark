@@ -1,0 +1,13 @@
+from enum import Enum
+
+
+class ExecOutcome(Enum):
+    PASSED = "PASSED"  # 测试通过
+    WRONG_ANSWER = "WRONG_ANSWER"  # 测试不通过
+    TIME_LIMIT_EXCEEDED = "TIME_LIMIT_EXCEEDED"  # 超时
+    COMPILATION_ERROR = "COMPILATION_ERROR"  # 编译失败
+    SYNTAX_ERROR = "SYNTAX_ERROR"  # 语法错误
+    RUNTIME_ERROR = "RUNTIME_ERROR"  # 运行时错误
+    INTERNAL_ERROR = "INTERNAL_ERROR"  # 内部错误
+    ARGUMENT_ERROR = "ARGUMENT_ERROR"  # 参数错误
+    UNKNOWN_ERROR = "UNKNOWN_ERROR"  # 未知错误

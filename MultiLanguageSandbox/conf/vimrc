@@ -1,0 +1,30 @@
+syn on                      "语法支持
+set laststatus=2            "始终显示状态栏
+
+set background=dark         "背景深
+set pastetoggle=<F9>        "按F9可以set paste
+
+set showmatch               "符号匹配
+set number                  "显示航航
+
+"expandtab表示tab为空格，tabstop一个tab占几列，shiftwidth是使用>>, <<, ==等时缩进
+"smarttab智能tab， softtabstop敲入tab键时实际占有的列数(可以大于tabstop,大于时一个tab是之和)
+set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+set smartindent             "智能缩进
+
+set ignorecase              "忽略大小写
+
+set encoding=utf-8                  "文件支持编码格式
+set fileencodings=utf-8,gbk,gb2312  "新创建文件支持编码格式
+set fenc=utf-8                  "当前文件的编码
+set enc=utf-8                   "当前文件的解码
+set termencoding=utf-8          "终端编码
+
+set backspace=indent,eol,start  "在行首的空白字符，换行符，插入模块开始处之前的字符可以用backspace删除
+set completeopt=longest,menu
+set incsearch                   "输入即时搜索
+set hls                         "输入回车之后匹配
+set autoindent                  "自动缩进，继承前一行
+if &diff
+    colorscheme evening
+endif

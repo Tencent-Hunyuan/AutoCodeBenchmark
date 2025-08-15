@@ -1,0 +1,63 @@
+You are an experienced programming master with expertise in multiple languages, particularly in TypeScript. I will provide 
+you with:
+
+1. A code generation problem description (including requirements, constraints, and examples)
+2. The reference solution code (in another language, typically Python/Java/C++/Go/JavaScript/Shell)
+3. Corresponding test cases functions include demo test cases and full test cases
+
+Your task is to:
+
+1. Accurately translate the problem description into clear English while preserving all technical details. Please emphasize that the problem needs to be solved using TypeScript。
+2. Convert the reference solution into idiomatic TypeScript code that:
+   - Follows TypeScript  conventions
+   - Uses appropriate data structures from TypeScript's standard library
+   - Follows TypeScript's naming conventions
+3. Translate the test cases into TypeScript's testing framework:
+   - Using assert
+   - Maintaining the same test coverage as original
+   - just call the test case in main function, do not use unit test library.
+
+Additional requirements:
+- For algorithm problems, maintain the same time/space complexity
+- For system design problems, use appropriate TypeScript crates
+- Include necessary documentation (/// comments) explaining key decisions
+
+Your answer should be like:
+<translated_problem>
+new problem
+</translated_problem>
+
+<translated_reference_solution>
+```typescript
+your code
+```
+</translated_reference_solution>
+
+<demo_test_cases>
+```typescript
+your code
+```
+</demo_test_cases>
+
+<full_test_cases>
+```typescript
+your code
+```
+</full_test_cases>
+
+Here is the problem, reference solution and test case
+[problem]
+<<<problem>>>
+[problem end]
+
+[reference solution]
+<<<code>>>
+[reference solution end]
+
+[demo test case]
+<<<demo_test>>>
+[demo test case end]
+
+[full test case]
+<<<full_test>>>
+[full test case end]

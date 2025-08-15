@@ -1,0 +1,161 @@
+You are an experienced programming master with expertise in multiple languages, particularly in Elixir. I will provide 
+you with:
+
+1. A code generation problem description (including requirements, constraints, and examples)
+2. The reference solution code (in another language, typically Python/Java/C++/Go/JavaScript/Shell)
+3. Corresponding test cases functions include demo test cases and full test cases
+
+Your task is to:
+
+1. Accurately translate the problem description into clear English while preserving all technical details. Please emphasize that the problem needs to be solved using Elixir。
+2. Convert the reference solution into idiomatic Elixir code that:
+   - Follows Elixir  conventions
+   - Uses appropriate data structures from Elixir's standard library
+   - Follows Elixir's naming conventions
+3. Translate the test cases into Elixir's testing framework:
+   - Maintaining the same test coverage as original
+   - just call the test case in main function, do not use unit test library.
+
+Additional requirements:
+- For algorithm problems, maintain the same time/space complexity
+- For system design problems, use appropriate Elixir crates
+- Include necessary documentation (/// comments) explaining key decisions
+
+Example:
+
+[problem]
+Write an Python function sum_of_two/2 that takes:
+
+A list of integers nums
+An integer target
+The function should return the indices of the two numbers that add up to the target.
+
+Constraints:
+
+Each input has exactly one solution
+You may not use the same element twice
+Return the indices in ascending order
+The solution must be in Python
+You can assume the input list contains at least 2 elements
+Example:
+sum_of_two([2, 7, 11, 15], 9) should return [0, 1] because nums[0] + nums[1] = 2 + 7 = 9
+
+[problem end]
+
+[reference solution]
+def two_sum(nums, target):
+    seen = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+[reference solution end]
+
+[demo test case]
+def test_demo():
+    assert two_sum([2,7,11,15], 9) == [0,1]
+    assert two_sum([3,2,4], 6) == [1,2]
+test_demo()
+[demo test case end]
+
+[full test case]
+def test_full():
+    assert two_sum([3,3], 6) == [0,1]
+    assert two_sum([0,4,3,0], 0) == [0,3]
+    assert two_sum([-1,-2,-3,-4,-5], -8) == [2,4]
+test_full()
+[full test case end]
+
+Your answer should be like:
+<translated_problem>
+Write an Elixir function sum_of_two/2 that takes:
+
+A list of integers nums
+An integer target
+The function should return the indices of the two numbers that add up to the target.
+
+Constraints:
+
+Each input has exactly one solution
+You may not use the same element twice
+Return the indices in ascending order
+The solution must be in Elixir
+You can assume the input list contains at least 2 elements
+Example:
+sum_of_two([2, 7, 11, 15], 9) should return [0, 1] because nums[0] + nums[1] = 2 + 7 = 9
+
+</translated_problem>
+
+<translated_reference_solution>
+```elixir
+defmodule Solution do
+  def sum_of_two(nums, target) do
+    nums
+    |> Enum.with_index()
+    |> Enum.reduce_while(%{}, fn {num, i}, seen ->
+      complement = target - num
+      if Map.has_key?(seen, complement) do
+        {:halt, [seen[complement], i] |> Enum.sort()}
+      else
+        {:cont, Map.put(seen, num, i)}
+      end
+    end)
+  end
+end
+```
+</translated_reference_solution>
+
+<demo_test_cases>
+```elixir
+defmodule SolutionTest do
+  use ExUnit.Case
+
+  describe "demo cases" do
+    test "basic example" do
+      assert Solution.sum_of_two([2, 7, 11, 15], 9) == [0, 1]
+      assert Solution.sum_of_two([3, 2, 4], 6) == [1, 2]
+    end
+  end
+end
+```
+</demo_test_cases>
+
+<full_test_cases>
+```elixir
+defmodule SolutionTest do
+  use ExUnit.Case
+
+  describe "full test cases" do
+    test "duplicate elements" do
+      assert Solution.sum_of_two([3, 3], 6) == [0, 1]
+    end
+
+    test "zero values" do
+      assert Solution.sum_of_two([0, 4, 3, 0], 0) == [0, 3]
+    end
+
+    test "negative numbers" do
+      assert Solution.sum_of_two([-1, -2, -3, -4, -5], -8) == [2, 4]
+    end
+  end
+end
+```
+</full_test_cases>
+
+Here is the problem, reference solution and test case
+[problem]
+<<<problem>>>
+[problem end]
+
+[reference solution]
+<<<code>>>
+[reference solution end]
+
+[demo test case]
+<<<demo_test>>>
+[demo test case end]
+
+[full test case]
+<<<full_test>>>
+[full test case end]

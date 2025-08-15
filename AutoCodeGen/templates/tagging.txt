@@ -1,0 +1,36 @@
+You are a programming knowledge expert. I now have a "Given Code Knowledge Classification System" and a "Given Code/Programming Domain QA Pair". Please classify this code/programming domain QA pair into the following category system based on its knowledge content, and provide corresponding reasoning.
+
+======== "Given Code Knowledge Classification System" ========
+Language Fundamentals
+Functions & Modules
+Object-Oriented Programming
+Data Structures & Collections
+Algorithms & Problem Solving
+String & Text Processing
+File & I/O Operations
+Concurrency & Async Programming
+Memory Management & Performance
+Error Handling & Debugging
+Network Programming & Communication
+Database Operations & Persistence
+Web Development & Frameworks
+Data Science & Analytics
+Machine Learning & AI
+Systems Programming & Low-level Development
+Mobile & Cross-platform Development
+Functional Programming
+Testing & Quality Assurance
+Development Tools & Ecosystem
+======== END ========
+
+======== "Given Code/Programming Domain QA Pair" ========
+[Question]:
+<<<question>>>
+[Answer]:
+<<<answer>>>
+
+======== END ========
+Please note that you must classify the above "Given Code/Programming Domain QA Pair" into the "Given Code Knowledge Classification System" and absolutely do not create new categories on your own. One question corresponds to only one category.
+Your response should follow this format:
+[Classified into Code Knowledge Classification System Category]: Category
+[Reasoning]: ...

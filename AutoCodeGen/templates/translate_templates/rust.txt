@@ -1,0 +1,151 @@
+You are an experienced programming master with expertise in multiple languages, particularly in Rust. I will provide 
+you with:
+
+1. A code generation problem description (including requirements, constraints, and examples)
+2. The reference solution code (in another language, typically Python/Java/C++/Go/JavaScript/Shell)
+3. Corresponding test cases functions include demo test cases and full test cases
+
+Your task is to:
+
+1. Accurately translate the problem description into clear English while preserving all technical details. Please emphasize that the problem needs to be solved using Rust。
+2. Convert the reference solution into idiomatic Rust code that:
+   - Follows Rust  conventions
+   - Uses appropriate data structures from Rust's standard library
+   - Follows Rust's naming conventions
+3. Translate the test cases into Rust's testing framework:
+   - Maintaining the same test coverage as original
+   - You must use unit test library, ie use #[test] in front of the demo_test function or the full_test function.
+
+Additional requirements:
+- For algorithm problems, maintain the same time/space complexity
+- For system design problems, use appropriate Rust crates
+- Include necessary documentation (/// comments) explaining key decisions
+- Do not redefine the function in the test cases
+- Do not import external file or library
+
+Example:
+
+[problem]
+Implement a function that finds the longest substring without repeating characters in a given string. The solution must be implemented in Python.
+
+Requirements:
+
+Given a string, return the length of the longest substring without repeating characters
+The string consists of English letters, digits, symbols and spaces
+The solution must be O(n) time complexity
+[problem end]
+
+[reference solution]
+def length_of_longest_substring(s: str) -> int:
+    char_index = {}
+    left = 0
+    max_len = 0
+    
+    for right, char in enumerate(s):
+        if char in char_index and char_index[char] >= left:
+            left = char_index[char] + 1
+        char_index[char] = right
+        max_len = max(max_len, right - left + 1)
+    
+    return max_len
+[reference solution end]
+
+[demo test case]
+def demo_test():
+    assert length_of_longest_substring("abcabcbb") == 3
+    assert length_of_longest_substring("bbbbb") == 1
+    print("all test pass")
+demo_test()
+[demo test case end]
+
+[full test case]
+def full_test():
+    assert length_of_longest_substring("pwwkew") == 3
+    assert length_of_longest_substring("dvdf") == 3
+    print("all test pass")
+full_test()
+[full test case end]
+
+Your answer should be like:
+<translated_problem>
+Implement a function that finds the longest substring without repeating characters in a given string. The solution must be implemented in Rust.
+
+Requirements:
+
+Given a string, return the length of the longest substring without repeating characters
+The string consists of English letters, digits, symbols and spaces
+The solution must be O(n) time complexity
+</translated_problem>
+
+<translated_reference_solution>
+```rust
+/// Finds the length of the longest substring without repeating characters.
+/// Uses a sliding window approach with O(n) time complexity and O(min(m, n)) space,
+/// where m is the character set size.
+fn length_of_longest_substring(s: String) -> i32 {
+    use std::collections::HashMap;
+    
+    let mut char_index = HashMap::new();
+    let mut left = 0;
+    let mut max_len = 0;
+    
+    for (right, char) in s.chars().enumerate() {
+        if let Some(&prev_index) = char_index.get(&char) {
+            if prev_index >= left {
+                left = prev_index + 1;
+            }
+        }
+        char_index.insert(char, right);
+        max_len = max_len.max((right - left + 1) as i32);
+    }
+    
+    max_len
+}
+```
+</translated_reference_solution>
+
+<demo_test_cases>
+```rust
+#[test]
+fn demo_test() {
+    // Demo test cases
+    assert_eq!(length_of_longest_substring("abcabcbb".to_string()), 3);
+    
+    assert_eq!(length_of_longest_substring("bbbbb".to_string()), 1);
+	
+	println!("all test pass");
+}
+```
+</demo_test_cases>
+
+<full_test_cases>
+```rust
+#[test]
+fn full_test() {
+    // Demo test cases
+    assert_eq!(length_of_longest_substring("pwwkew".to_string()), 3);
+    
+    assert_eq!(length_of_longest_substring("dvdf".to_string()), 3);
+	
+	println!("all test pass");
+}
+
+```
+</full_test_cases>
+
+Here is the problem, reference solution and test case
+[problem]
+<<<problem>>>
+[problem end]
+
+[reference solution]
+<<<code>>>
+[reference solution end]
+
+[demo test case]
+<<<demo_test>>>
+[demo test case end]
+
+[full test case]
+<<<full_test>>>
+[full test case end]

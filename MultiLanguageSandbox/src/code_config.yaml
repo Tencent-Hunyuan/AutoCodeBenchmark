@@ -1,0 +1,482 @@
+code_store:
+  source_code_dir: /data/codes
+
+language_convert:
+  c++: cpp
+  py: python
+  js: javascript
+  ts: typescript
+  rs: rust
+  kotlin: kotlin
+  hs: haskell
+  lisp: common lisp
+  bash: shell
+  sh: shell
+  ps1: powershell
+  fs: f#
+  fsharp: f#
+  f_sharp: f#
+  visual basic: vb
+  erl: erlang
+  ex: elixir
+  pas: pascal
+  coffee: coffeescript
+  emacs-lisp: emacs lisp
+  el: emacs lisp
+  vim: vimscript
+  scm: scheme
+  cs: c#
+  csharp: c#
+  c_sharp: c#
+  golang: go
+
+supported_languages:
+  python:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: python3
+    execute_flags: ["{file_name_template}"]
+    file_extension: .py
+    file_name_template: test.py
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - "AssertionError"
+
+  ruby:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: ruby
+    execute_flags: ["{file_name_template}"]
+    file_extension: .rb
+    file_name_template: test.rb
+    timelimit_factor: 0
+    special_setup: []
+
+  perl:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: perl
+    execute_flags: ["{file_name_template}"]
+    file_extension: .pl
+    file_name_template: test.pl
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - "failed"
+
+  javascript:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: node
+    execute_flags: ["{file_name_template}"]
+    file_extension: .js
+    file_name_template: test.js
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - "failed"
+      - "AssertionError"
+
+  julia:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: julia
+    execute_flags: ["{file_name_template}"]
+    file_extension: .jl
+    file_name_template: test.jl
+    timelimit_factor: 0
+    special_setup:
+      - mkdir_if_not_exists: /home/sandbox/.julia
+      - change_ownership: /home/sandbox/.julia
+    error_check:
+      - "AssertionError"
+
+  r:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: Rscript
+    execute_flags: ["{file_name_template}"]
+    file_extension: .r
+    file_name_template: test.r
+    timelimit_factor: 0
+    special_setup: []
+
+  lua:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: lua
+    execute_flags: ["{file_name_template}"]
+    file_extension: .lua
+    file_name_template: test.lua
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - "failed"
+
+  swift:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: swift
+    execute_flags: ["{file_name_template}"]
+    file_extension: .swift
+    file_name_template: test.swift
+    timelimit_factor: 0
+    special_setup:
+      - mkdir_if_not_exists: /home/sandbox/.cache/clang/ModuleCache
+      - change_ownership: /home/sandbox/.cache/clang/ModuleCache
+    error_check:
+      - "Assertion failed"
+
+  shell:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: bash
+    execute_flags: ["{file_name_template}"]
+    file_extension: .sh
+    file_name_template: test.sh
+    timelimit_factor: 0
+    special_setup: []
+
+  tcl:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: tclsh
+    execute_flags: ["{file_name_template}"]
+    file_extension: .tcl
+    file_name_template: test.tcl
+    timelimit_factor: 0
+    special_setup: []
+
+  php:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: php
+    execute_flags: ["{file_name_template}"]
+    file_extension: .php
+    file_name_template: test.php
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - assert()
+      - failed
+    syntax_check: true
+
+  dart:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: dart
+    execute_flags: [run, --enable-asserts, "{file_name_template}"]
+    file_extension: .dart
+    file_name_template: test.dart
+    timelimit_factor: 0
+    special_setup:
+      - mkdir_if_not_exists: /home/sandbox/.dart-tool
+      - change_ownership: /home/sandbox/.dart-tool
+    error_check:
+      - "AssertionError"
+      - "failed"
+
+  groovy:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: groovy
+    execute_flags: ["{file_name_template}"]
+    file_extension: .groovy
+    file_name_template: test.groovy
+    timelimit_factor: 1
+    special_setup: []
+
+  scala:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: java
+    execute_flags: ["-jar", "/usr/local/bin/amm", "{file_name_template}"]
+    file_extension: .sc
+    file_name_template: test.sc
+    timelimit_factor: 25
+    special_setup:
+      - mkdir_if_not_exists: /home/sandbox/.ammonite
+      - change_ownership: /home/sandbox/.ammonite
+    error_check:
+      - "AssertionError"
+
+  powershell:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: pwsh
+    execute_flags: ["{file_name_template}"]
+    file_extension: .ps1
+    file_name_template: test.ps1
+    timelimit_factor: 0
+    special_setup: []
+
+  "common lisp":
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: sbcl
+    execute_flags: [--script, "{file_name_template}"]
+    file_extension: .lisp
+    file_name_template: test.lisp
+    timelimit_factor: 0
+    special_setup: []
+
+  "emacs lisp":
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: emacs
+    execute_flags: [--batch, -l, "{file_name_template}"]
+    file_extension: .el
+    file_name_template: test.el
+    timelimit_factor: 0
+    special_setup: []
+
+  elixir:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: elixir
+    execute_flags: ["{file_name_template}"]
+    file_extension: .ex
+    file_name_template: test.ex
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - "assertion fails"
+
+  racket:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: raco
+    execute_flags: ["test", "{file_name_template}"]
+    file_extension: .rkt
+    file_name_template: test.rkt
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - "FAILURE"
+      - "ERROR"
+
+  scheme:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: raco
+    execute_flags: ["test", "{file_name_template}"]
+    file_extension: .scm
+    file_name_template: test.scm
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - "FAILURE"
+      - "ERROR"
+
+  coffeescript:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: coffee
+    execute_flags: ["{file_name_template}"]
+    file_extension: .coffee
+    file_name_template: test.coffee
+    timelimit_factor: 0
+    special_setup: []
+
+  coffee:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: coffee
+    execute_flags: ["{file_name_template}"]
+    file_extension: .coffee
+    file_name_template: test.coffee
+    timelimit_factor: 0
+    special_setup: []
+
+  kotlin:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: kotlinc
+    execute_flags: [-script, "{file_name_template}"]
+    file_extension: .kts
+    file_name_template: test.kts
+    timelimit_factor: 10
+    special_setup: []
+    error_check:
+      - "AssertionError"
+
+  vimscript:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: vim
+    execute_flags: [-u, NONE, -i, NONE, -n, -N, --cmd, "source {file_name_template} | qa!"]
+    file_extension: .vim
+    file_name_template: test.vim
+    timelimit_factor: 2
+    special_setup: []
+    error_check:
+      - "Error detected"
+      - "failed"
+
+  # 编译型语言
+  c:
+    compile_cmd: gcc
+    compile_flags: [-o, "{executable_name}", "{file_name_template}", -lm, -lpthread, -lcurl, -lssl, -lcrypto]
+    execute_cmd: "./{executable_name}"
+    execute_flags: []
+    file_extension: .c
+    file_name_template: test.c
+    executable_name: test
+    timelimit_factor: 3
+    special_setup: []
+
+  cpp:
+    compile_cmd: g++
+    compile_flags: [-o, "{executable_name}", "{file_name_template}"]
+    execute_cmd: "./{executable_name}"
+    execute_flags: []
+    file_extension: .cpp
+    file_name_template: test.cpp
+    executable_name: test
+    timelimit_factor: 3
+    special_setup: []
+
+  pascal:
+    compile_cmd: fpc
+    compile_flags: [-MObjfpc, "-o{executable_name}", "{file_name_template}"]
+    execute_cmd: "./{executable_name}"
+    execute_flags: []
+    file_extension: .pas
+    file_name_template: test.pas
+    executable_name: test
+    timelimit_factor: 0
+    special_setup: []
+
+  fortran:
+    compile_cmd: gfortran
+    compile_flags: [-o, "{executable_name}", "{file_name_template}"]
+    execute_cmd: "./{executable_name}"
+    execute_flags: []
+    file_extension: .f90
+    file_name_template: test.f90
+    executable_name: test
+    timelimit_factor: 0
+    special_setup: []
+    error_check:
+      - Assertion failed
+
+  haskell:
+    compile_cmd: ghc
+    compile_flags: [-O2, -o, "{executable_name}", "{file_name_template}"]
+    execute_cmd: "./{executable_name}"
+    execute_flags: []
+    file_extension: .hs
+    file_name_template: test.hs
+    executable_name: test
+    timelimit_factor: 0
+    special_setup: []
+
+  # 特殊处理的语言
+  "c#":
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: dotnet
+    execute_flags: ["run", "--project", "{project_name}"]
+    file_extension: .cs
+    file_name_template: Program.cs
+    project_name: MyProject
+    timelimit_factor: 10
+    handler: dotnet_handler
+    special_setup:
+      - mkdir_if_not_exists: /home/sandbox/.dotnet
+      - change_ownership: /home/sandbox/.dotnet
+    error_check:
+      - "Assertion failed"
+
+  "f#":
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: dotnet
+    execute_flags: ["run", "--project", "{project_name}"]
+    file_extension: .fs
+    file_name_template: Program.fs
+    project_name: MyProject
+    timelimit_factor: 10
+    handler: dotnet_handler
+    special_setup:
+      - mkdir_if_not_exists: /home/sandbox/.dotnet
+      - change_ownership: /home/sandbox/.dotnet
+
+  vb:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: dotnet
+    execute_flags: ["run", "--project", "{project_name}"]
+    file_extension: .vb
+    file_name_template: Program.vb
+    project_name: MyProject
+    timelimit_factor: 10
+    handler: dotnet_handler
+    special_setup:
+      - mkdir_if_not_exists: /home/sandbox/.dotnet
+      - change_ownership: /home/sandbox/.dotnet
+
+  typescript:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: npx
+    execute_flags: ["tsx", "{file_name_template}"]
+    file_extension: .ts
+    file_name_template: test.ts
+    timelimit_factor: 1
+    special_setup: []
+    error_check:
+      - "failed"
+      - "AssertionError"
+
+  rust:
+    compile_cmd: ""
+    compile_flags: []
+    execute_cmd: cargo
+    execute_flags: [test]
+    file_extension: .rs
+    file_name_template: main.rs
+    timelimit_factor: 10
+    handler: rust_handler
+    special_setup: []
+
+  erlang:
+    compile_cmd: erlc
+    compile_flags: []
+    execute_cmd: erl
+    execute_flags: [-noshell, -s, "{module_name}", "{test_function}", -s, init, stop]
+    file_extension: .erl
+    file_name_template: test.erl
+    timelimit_factor: 1
+    handler: erlang_handler
+    special_setup: []
+
+  go:
+    compile_cmd: go
+    compile_flags: [build, -o, "{code_dir}/{executable_name}", "{code_dir}/{file_name_template}"]
+    execute_cmd: "{code_dir}/{executable_name}"
+    execute_flags: []
+    file_extension: .go
+    file_name_template: main.go
+    executable_name: main
+    timelimit_factor: 1
+    handler: go_handler
+    special_setup:
+      - mkdir_if_not_exists: /home/sandbox/.cache/go-build
+      - change_ownership: /home/sandbox/.cache/go-build
+    
+  java:
+    compile_cmd: javac
+    compile_flags: ["{file_name_template}"]
+    execute_cmd: java
+    execute_flags: []
+    file_extension: .java
+    file_name_template: test.java
+    executable_name: test
+    timelimit_factor: 1
+    handler: java_handler
+    use_jvm_pool: true
+    special_setup: []
+    error_check:
+      - "Failures"

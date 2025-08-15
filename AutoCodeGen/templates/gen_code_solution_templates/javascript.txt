@@ -1,0 +1,152 @@
+# 代码基准构建任务
+*为了构建代码基准，我需要你帮助我创建一个javascript函数，以及两个测试函数。*
+
+## 任务概述
+给定任何编程语言的代码文件或代码片段，你的任务是提炼其核心逻辑，创建一个自包含、可验证、具有教育意义且具有挑战性的javascript函数。你还需要创建两个测试函数：demoTesting()和fullTesting()。以下是详细要求：
+1. 分离代码块：
+- 提供三个独立的代码块：
+- 一个块用于重写的包含核心逻辑的javascript函数。
+- 两个块用于测试函数（demoTesting()和fullTesting()）。
+- 这三个代码块用```javascript和```包裹。
+2. demoTesting()中的测试代码：
+- 此函数应包含不超过2个测试用例。它将用于演示输入-输出格式。
+- 对于每个测试用例，硬编码输入值，并在执行demoTesting()时打印输入和对应的输出。
+- 在此函数中避免边缘用例，专注于用于演示的基本测试用例。
+3. fullTesting()中的测试代码：
+- 此函数应包含至少7个测试用例的全面集合。
+- 这些测试用例应设计为全面测试转换后的函数功能，包括:
+    (1) 基本用例（例如demoTesting()中使用的测试用例）。
+    (2) 边界用例（例如最小/最大值、空输入）。
+    (3) 边缘用例，测试代码的健壮性（例如异常值、边界条件检查）。
+    (4) 对于每个测试用例，硬编码输入值，并在执行fullTesting()时打印输入和对应的输出。
+- 测试函数的目的是提供全面的输入并调用被测试函数以获取输出。输入处理（例如验证、边缘用例）应由函数本身完成，而非测试。
+4. 使用标准和第三方javascript库：
+- 允许使用标准javascript库和第三方库（如果需要）来实现核心逻辑。
+- 如果使用依赖项，请在注释中明确说明。
+5. 可执行代码：
+- 提供自包含且可执行的javascript代码，包含硬编码的测试输入。
+- 移除任何非核心逻辑，例如绘图、文件I/O和未使用的函数。
+- 如果原始代码由于依赖特定业务逻辑或外部系统而无法直接执行，请通过模拟所需上下文或简化逻辑来调整代码，使其成为自包含、可测试的形式，同时保留核心功能。
+- 对于过于简单的代码（例如仅将两个数字相加的函数），请扩展其逻辑以使其更具挑战性。
+6. 代码风格和命名：
+- 遵循javascript命名约定，确保函数名称描述性且清晰地传达其目的。
+- 提供清晰简洁的注释，解释核心逻辑和每个函数的目的，特别是关键步骤。
+
+
+## 输出要求
+1. 转换后的javascript函数
+- 依赖项：使用标准javascript库（如Math）和第三方库（如果需要）。
+- 可执行性调整：如果原始代码依赖外部数据源或特定业务工作流，请通过硬编码输入、模拟依赖项或简化逻辑来修改代码，使其自包含，同时保留核心算法。
+- 移除非核心逻辑：消除所有非必要部分，例如绘图、文件I/O和未使用的函数。
+- 代码风格：遵循良好的javascript编码实践，包括适当的缩进、一致的命名约定。添加注释以解释代码功能和阐明关键步骤。
+- 不拘泥于一种模式：不受给定代码片段逻辑的限制。进行演进和扩展，使代码更完整且具有教育意义。
+2. 可执行的测试函数
+- 函数名称：使用demoTesting()和fullTesting()作为测试函数名称。
+- 输入：在测试函数中硬编码测试输入。不要将参数传递给demoTesting()或fullTesting()函数。
+- 输出：直接将测试输入及其对应的输出打印到控制台。确保输出为JSON可序列化类型（例如字符串、整数、浮点数、列表）。不要在打印结果中包含“Output”一词。
+- 依赖项：使用标准javascript库（如Math）和第三方库（如果需要）用于核心逻辑。
+- 自适应调整测试函数：如果原始代码的逻辑是更大系统的一部分，请调整demoTesting()和fullTesting()函数以创建自包含的测试环境。这可能包括初始化必要的对象、设置测试数据或模拟外部交互。
+- 代码风格：在测试函数中遵循良好的javascript代码风格，缩进正确且清晰。包括注释以解释测试设置和测试过程中的关键步骤。
+- 测试函数格式：demoTesting()和fullTesting()的结构和格式应相同，唯一的区别是测试用例的数量。
+3. 关键规则
+- 无外部输入：所有测试参数应在demoTesting或fullTesting函数中硬编码。
+- 无复杂类型：使用列表作为数组，使用基本类型作为标量。
+- 无样板代码：从原始代码中移除注释、未使用的代码和非必要逻辑（但根据要求在生成的javascript代码中添加适当的注释）。
+- 无随机性：代码不得依赖任何随机值或函数。确保所有输入和输出每次执行时都是可预测且一致的。
+- 直接执行：代码必须能够直接运行，可能需要安装代码中指定的任何第三方依赖项。
+
+## 示例转换
+【原始代码】（任何编程语言，此处为使用Pandas的假设示例）：
+```python
+import pandas as pd
+def analyze_data(df):
+    return df.mean(), df.std()
+data = pd.DataFrame([1, 2, 3, 4])
+print(analyze_data(data))  # 输出：(2.5, 1.118...)
+```
+【转换后的javascript代码】:
+```javascript
+// Converted JavaScript functions
+const analyzeData = (df) => {
+    // Check if DataFrame is empty
+    if (df.length === 0) {
+        return "Error: Empty DataFrame";
+    }
+
+    // Check if all values are numeric
+    const isNumeric = df.every(row => !isNaN(row[0]));
+    if (!isNumeric) {
+        return "Error: Non-numeric data";
+    }
+
+    // Calculate mean and standard deviation
+    const values = df.map(row => row[0]);
+    const mean = values.reduce((sum, val) => sum + val, 0) / values.length;
+
+    const squaredDiffs = values.map(val => Math.pow(val - mean, 2));
+    const variance = squaredDiffs.reduce((sum, val) => sum + val, 0) / values.length;
+    const stdDev = Math.sqrt(variance);
+
+    // Return results as object
+    return {
+        mean: mean,
+        stdDev: stdDev
+    };
+};
+```
+```javascript
+// demoTesting function
+const demoTesting = () => {
+    // Hard-coded test cases for demonstration
+    const testCases = [
+        [[1], [2], [3], [4]]  // Test case 1: Simple list of numbers
+    ];
+
+    testCases.forEach(inputData => {
+        // Print input data for current test case
+        console.log("Input:", inputData);
+
+        // Call analyzeData with current input
+        const result = analyzeData(inputData);
+
+        // Print analysis result
+        console.log("Analysis Result:", result);
+    });
+};
+
+// Execute demo testing
+```
+```javascript
+// fullTesting function
+const fullTesting = () => {
+    // Hard-coded test cases with various conditions
+    const testCases = [
+        [[1], [2], [3], [4]],         // Test case 1: Simple sequence
+        [[12], [45], [6], [89], [34]], // Test case 2: Larger set
+        [[5]],                         // Test case 3: Single value
+        [],                            // Test case 4: Empty
+        [[1], [-1], [1], [-1]],        // Test case 5: Mixed signs
+        [[0], [0], [0], [0]],          // Test case 6: All zeros
+        [[999999], [1000000], [1000001]], // Test case 7: Large numbers
+        [[100], [200], [300], [400]],  // Test case 8: Even larger set
+        [['a'], ['b'], ['c']]          // Test case 9: Non-numeric
+    ];
+
+    testCases.forEach(inputData => {
+        // Print input data for current test case
+        console.log("Input:", inputData);
+
+        // Call analyzeData with current input
+        const result = analyzeData(inputData);
+
+        // Print analysis result
+        console.log("Analysis Result:", result);
+    });
+};
+```
+
+
+# 以下是需要处理的代码文件：
+[代码开始]
+<<<<code>>>>
+[代码结束]

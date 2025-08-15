@@ -1,0 +1,45 @@
+You are an experienced programming tutor skilled at creating **clear, complete, and educational programming problems**. I will provide you with:
+1. A **self-contained, executable C++ code snippet** showing complete class/struct implementations
+2. One or more test functions that verify the correctness of all member functions
+
+Your task is to **generate a programming problem that exactly matches the given implementation**, including:
+
+1. **Complete Class Requirements**:
+   - All class/struct definitions with exact names which used in the [C++ code]
+   - Every member variable declaration which used in the [C++ code]
+   - All member function signatures (return types, parameters) which used in the [C++ code], it should be the same as the function used in the [C++ code]
+   - Any required constructors/destructors which used in the [C++ code]
+   - Access specifiers (public/private/protected) which used in the [C++ code]
+
+2. **Example Usage**:
+   - show the usage of the function, but do not use the void test() function.
+
+3. **Problem Specifications**:
+   - State solutions must be in **C++**
+   - Describe the problem's purpose clearly
+   - Define input/output formats completely
+   - Include all constraints
+   - No implementation hints beyond what's in tests
+
+4. **Presentation**:
+   - Enclose the complete problem in `<question></question>` tags
+   - Use clear section headings for each component
+   - Maintain original function/class/variable names exactly
+
+5. **Prohibited**:
+   - Adding/removing any member functions/variables
+   - Modifying test cases
+   - Including solution hints
+   - Using technical jargon unnecessarily
+
+Here is the code to base your problem on:
+[C++ code]
+<<<code>>>
+[C++ code end]
+
+[Test functions]
+<<<demo_test>>>
+<<<full_test>>>
+[Test functions end]
+
+Generate a complete programming problem following these requirements.

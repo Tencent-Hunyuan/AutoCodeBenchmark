@@ -1,0 +1,297 @@
+# Java Benchmark Construction Task  
+*In order to build the Java benchmark, I need you to help me create a Java method, as well as two test methods.*  
+
+## Task Overview  
+Given a code file or code snippet in any programming language, your task is to **evolve and expand its core logic** to create a **self-contained**, **verifiable**, and **more challenging** Java method. You also need to create two testing methods: `demoTesting()` and `fullTesting()`. Below are the detailed requirements:  
+
+1. **Separate Code Blocks**:  
+   - Provide **three distinct code blocks**:  
+     - One block for the rewritten Java method that contains the core logic.  
+     - Two blocks for the test methods (`demoTesting()` and `fullTesting()`).  
+   - The three code blocks are wrapped with ```java and ```.  
+
+2. **Test Code in `demoTesting()`**:  
+   - This method should contain **no more than 2 test cases**. It will be used to **demonstrate** the input-output format.  
+   - For each test case, **hard-code the input values** and print both the input and the corresponding output when `demoTesting()` is executed.  
+   - Avoid edge cases in this method, and focus on basic test cases for demonstration purposes.  
+
+3. **Test Code in `fullTesting()`**:  
+   - This method should include a comprehensive set of **at least 7 test cases**.  
+   - These test cases should be designed to thoroughly test the functionality of the converted method, including:  
+     - **Basic cases** (e.g., test cases used in `demoTesting()`).  
+     - **Boundary cases** (e.g., minimum/maximum values, empty inputs).  
+     - **Edge cases** that test the robustness of the code (e.g., abnormal values, boundary condition checks).  
+   - For each test case, **hard-code the input values** and print both the input and the corresponding output when `fullTesting()` is executed.  
+   - The goal of the test method is to provide comprehensive inputs and call the method being tested to obtain the output. Input handling (e.g., validation, edge cases) should be done by the method itself, not the test.  
+
+4. **Use Standard and Third-Party Java Libraries**:  
+   - You are allowed to use standard Java libraries (e.g., `java.util`, `java.math`) and third-party libraries (if required) for implementing the core logic.  
+   - Ensure that all dependencies are clearly explained in the comments if used.  
+
+5. **Executable Code**:  
+   - Provide **self-contained and executable Java code** with hard-coded test inputs.  
+   - Remove any non-core logic such as plots, file I/O, and unused methods.  
+   - If the original code is not directly executable (e.g., due to dependency on specific business logic or external systems), adapt the code to a self-contained, testable form by simulating the required context or simplifying the logic while preserving the core functionality.  
+   - The code must have a sufficient level of complexity. For basic examples (like a method that simply adds two numbers), you should enhance it to include greater complexity and make it more challenging.  
+
+6. **Code Style and Naming**:  
+   - Follow **Java** naming conventions (e.g., camelCase for methods, PascalCase for classes) and ensure that method names are **descriptive** and **clear** in conveying their purpose.  
+   - Provide **clear and concise comments** explaining the core logic and the purpose of each method, especially the key steps.  
+
+## Output Requirements  
+
+### 1. Converted Java Method  
+- **Dependencies**: Use standard Java libraries (e.g., `java.util`) and third-party libraries when necessary.  
+- **Adaptation for Executability**: If the original code depends on external data sources or specific business workflows, modify it to be self-contained by hardcoding inputs, simulating dependencies, or simplifying the logic, while preserving the core algorithm.  
+- **Remove Non-Core Logic**: Eliminate all non-essential parts such as plots, file I/O, and unused methods.  
+- **Code Style**: Follow good Java coding practices, including proper indentation, consistent naming conventions, and adherence to Java style guidelines. Add comments to explain the functionality of the code and clarify key steps.  
+- **Not to stick to one pattern**: Not bound by the logic of the given code snippet. Carry out evolution and expansion to make the code more challenging.  
+
+### 2. Executable Test Methods  
+- **Method Names**: Use `demoTesting()` and `fullTesting()` for the test methods.  
+- **Inputs**: Hardcode the test inputs within the test methods. Do not pass parameters into the `demoTesting()` or `fullTesting()` methods.  
+- **Output**: Directly print the test inputs and their corresponding outputs to the console. Ensure that outputs are in JSON-serializable types (e.g., strings, integers, floats, lists). Do not include the word "Output" in the printed results.  
+- **Dependencies**: Use standard Java libraries (e.g., `java.util`, `java.io`) and third-party libraries, if needed, for the core logic.  
+- **Testing Adaptation**: If the original code's logic is part of a larger system, adapt the `demoTesting()` and `fullTesting()` methods to create a self-contained testing environment. This may include initializing necessary objects, setting up test data, or mocking external interactions.  
+- **Code Style**: Follow good Java code style in the test methods, with proper indentation and clarity. Include comments to explain the test setup and key steps in the testing process.  
+- **Test Method Format**: The structure and format of `demoTesting()` and `fullTesting()` should be identical, with the only difference being the number of test cases.  
+- **Use JUnit 5 unit test**: The definition of test functions（`demoTesting()` and `fullTesting()`） should comply with JUnit 5 requirements.
+
+### 3. Code Structure  
+
+```java  
+// Converted Java method
+import java.util.List;  
+
+class DataAnalyzer {  
+
+    /**  
+     * Calculates the average of a list of numbers.  
+     * If the list is empty, returns 0.0 to avoid division by zero.  
+     *  
+     * @param data List of numbers  
+     * @return Average of the numbers, or 0.0 if the list is empty  
+     */  
+    public double calculateAverage(List<Double> data) {  
+        if (data.isEmpty()) {  
+            return 0.0;  
+        }  
+        double total = 0.0;  
+        for (double value : data) {  
+            total += value;  
+        }  
+        return total / data.size();  
+    }  
+}  
+```  
+
+```java  
+// demoTesting method  
+import org.junit.jupiter.api.Test;
+import java.util.Arrays;  
+import java.util.List;  
+
+class DemoTest {  
+    @Test
+    public void demoTesting() {  
+        // Hardcoded test inputs. We create a list of no more than 2 test cases,  
+        // where each test case is a list of numbers to test calculateAverage.  
+        List<List<Double>> testCases = Arrays.asList(  
+            Arrays.asList(1.0, 2.0, 3.0)  
+        );  
+
+        for (List<Double> inputData : testCases) {  
+            // Print the current test case's input data  
+            System.out.println("Input: " + inputData);  
+
+            // Call calculateAverage with the current input data  
+            double result = DataAnalyzer.calculateAverage(inputData);  
+
+            // Print the computed result (average)  
+            System.out.println("Mean: " + result);  
+        }  
+    }  
+}  
+```  
+
+```java  
+// fullTesting method  
+import java.util.Arrays;  
+import java.util.List;  
+import org.junit.jupiter.api.Test;
+
+class FullTest {  
+    @Test
+    public void fullTesting() {  
+        // Hardcoded test inputs. We create a list of at least 7 test cases,  
+        // where each test case is a list of numbers to test calculateAverage.  
+        List<List<Double>> testCases = Arrays.asList(  
+            Arrays.asList(1.0, 2.0, 3.0),                // Basic case  
+            Arrays.asList(12.0, 45.0, 6.0, 89.0, 34.0),  // More numbers  
+            Arrays.asList(),                             // Empty list  
+            Arrays.asList(5.0),                          // Single element  
+            Arrays.asList(-2.0, 4.0, -6.0, 8.0),         // Negative numbers  
+            Arrays.asList(0.0),                          // Zero  
+            Arrays.asList(999.0, 999999999.0, 999999999.0), // Large numbers  
+            Arrays.asList(0.5, 9.8, -9.2, 25365423435.0) // Decimal numbers  
+        );  
+
+        for (List<Double> inputData : testCases) {  
+            // Print the current test case's input data  
+            System.out.println("Input: " + inputData);  
+
+            // Call calculateAverage with the current input data  
+            double result = DataAnalyzer.calculateAverage(inputData);  
+
+            // Print the computed result (average)  
+            System.out.println("Mean: " + result + "\n");  
+        }  
+    }  
+
+    public static void main(String[] args) {  
+        fullTesting();  
+    }  
+}  
+```  
+
+#### 3. Key Rules  
+- **No external inputs**: All test parameters should be hard-coded in the `demoTesting` or `fullTesting` method.  
+- **No complex types**: Use lists for arrays and primitive types for scalars.  
+- **No exception handling**: Do not generate code to catch the exception. (i.e. do not use "try" "catch"). 
+- **No boilerplate**: Remove comments, unused code, and non-essential logic from the original code (but add appropriate comments in the generated Java code as per the requirements).  
+- **No randomness**: The code must not rely on any random values or functions. Ensure that all inputs and outputs are predictable and consistent every time the code is executed.  
+- **Direct execution**: The code must be able to be directly compiled into a main executable program and run as `java DemoTest` or `java FullTest`.  
+
+### Example Conversion  
+**Original Code** (in any programming language, here a hypothetical example using Python):  
+```python  
+def analyze_data(data):  
+    return sum(data) / len(data) if data else 0.0  
+
+data = [1, 2, 3, 4]  
+print(analyze_data(data))  # Output: 2.5  
+```  
+
+**Converted Java Code** (**evolving and expanding** the core logic):  
+```java  
+import java.util.List;  
+import java.util.Arrays;  
+import java.util.HashMap;  
+import java.util.Map;  
+
+class AdvancedDataAnalyzer {  
+
+    /**  
+     * Performs multiple statistical analyses on a list of numbers.  
+     *  
+     * @param data List of numbers  
+     * @return A map containing mean, median, variance, and standard deviation  
+     * @throws IllegalArgumentException if the input list is empty  
+     */  
+    public Map<String, Double> analyzeData(List<Double> data) {  
+        if (data.isEmpty()) {  
+            throw new IllegalArgumentException("Error: Empty input list");  
+        }  
+
+        // Calculate mean  
+        double sum = 0.0;  
+        for (double value : data) {  
+            sum += value;  
+        }  
+        double mean = sum / data.size();  
+
+        // Calculate variance and standard deviation  
+        double variance = 0.0;  
+        for (double value : data) {  
+            variance += Math.pow(value - mean, 2);  
+        }  
+        variance /= data.size();  
+        double stdDev = Math.sqrt(variance);  
+
+        // Calculate median  
+        List<Double> sortedData = data.stream().sorted().toList();  
+        double median;  
+        if (sortedData.size() % 2 == 0) {  
+            median = (sortedData.get(sortedData.size() / 2 - 1) +  
+                     sortedData.get(sortedData.size() / 2)) / 2;  
+        } else {  
+            median = sortedData.get(sortedData.size() / 2);  
+        }  
+
+        // Prepare result map  
+        Map<String, Double> results = new HashMap<>();  
+        results.put("mean", mean);  
+        results.put("median", median);  
+        results.put("variance", variance);  
+        results.put("stdDev", stdDev);  
+
+        return results;  
+    }  
+}  
+```  
+
+**Demo Testing Method**:  
+```java  
+import java.util.List;  
+import java.util.Arrays;  
+import java.util.HashMap;  
+import java.util.Map;  
+import org.junit.jupiter.api.Test;
+
+class DemoTest {  
+    @Test
+    public void demoTesting() {  
+        List<List<Double>> testCases = Arrays.asList(  
+            Arrays.asList(1.0, 2.0, 3.0, 4.0)  
+        );  
+
+        for (List<Double> inputData : testCases) {  
+            System.out.println("Input: " + inputData);  
+            Map<String, Double> result = AdvancedDataAnalyzer.analyzeData(inputData);  
+            System.out.println("Analysis Result:");  
+            for (Map.Entry<String, Double> entry : result.entrySet()) {  
+                System.out.println(entry.getKey() + ": " + entry.getValue());  
+            }
+            System.out.println();  
+        }  
+    }  
+}  
+```  
+
+**Full Testing Method**:  
+```java  
+import java.util.List;  
+import java.util.Arrays;  
+import java.util.HashMap;  
+import java.util.Map;  
+import org.junit.jupiter.api.Test;
+class FullTest {
+    @Test
+    public void fullTesting() {  
+        List<List<Double>> testCases = Arrays.asList(  
+            Arrays.asList(1.0, 2.0, 3.0, 4.0),          // Basic case  
+            Arrays.asList(12.0, 45.0, 6.0, 89.0, 34.0), // More numbers  
+            Arrays.asList(),                            // Empty list  
+            Arrays.asList(5.0),                         // Single element  
+            Arrays.asList(-2.0, 4.0, -6.0, 8.0),        // Negative numbers  
+            Arrays.asList(0.0, 0.0, 0.0, 0.0),          // All zeros  
+            Arrays.asList(999999.0, 1000000.0, 1000001.0), // Large numbers  
+            Arrays.asList(0.5, 9.8, -9.2, 25365423435.0)   // Decimal numbers  
+        );  
+
+        for (List<Double> inputData : testCases) {  
+            System.out.println("Input: " + inputData);  
+            Map<String, Double> result = AdvancedDataAnalyzer.analyzeData(inputData);  
+            System.out.println("Analysis Result:");  
+            for (Map.Entry<String, Double> entry : result.entrySet()) {  
+                System.out.println(entry.getKey() + ": " + entry.getValue());  
+            }  
+            System.out.println();  
+        }  
+    }  
+}  
+```
+Here is the code file you need to process:
+[Code Start]
+<<<<code>>>>
+[Code End]

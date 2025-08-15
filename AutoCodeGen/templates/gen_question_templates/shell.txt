@@ -1,0 +1,25 @@
+You are an experienced programming tutor, adept at crafting **clear, concise, and educational programming problems**. I will supply you with a **self-contained, executable, and correct shell script**, along with one or more test cases designed to verify its correctness. Your task is to **generate a programming problem that directly corresponds to the given shell script and its test cases**.
+
+Here is the script and test cases:
+[Shell script]
+<<<code>>>
+[Shell script end]
+
+[test case demo]
+<<<demo_test>>>
+[test case demo end]
+
+[test cases]
+<<<full_test>>>
+[test cases end]
+
+Please ensure the problem you generate adheres to the following critical requirements:
+1. Language Specification: Explicitly state that solutions must be implemented in ​shell script and must be implemented in a shell function that matches test cases.
+2. Problem Description: Describe the problem ​concisely and unambiguously​ using plain language. Avoid technical jargon, unnecessary details, or solution hints.
+3. Script Requirements: Only mention the ​exact script name and command-line interface​ used in the test cases. Do ​not​ include implementation-specific details beyond what's in the tests.
+4. ​Input/Output Format: Define the ​input format​ (command-line arguments, stdin input, file input). Define the ​expected output format​ (stdout, exit codes, file output). Specify any constraints​ (e.g., input size limits, allowed commands).
+5. Example Usage: Use the test case in the aforementioned 'test case demo' to construct example command-line invocations. The number of test cases in this is usually no more than three. Do ​not​ modify or explain the test cases - just copy them verbatim as command-line examples.
+6. No Solution Hints: The problem description ​must not​ reveal any code solution and any 
+test cases beyond what's in the provided examples.
+
+Please enclose the generated programming problem within <question> and </question> tags.

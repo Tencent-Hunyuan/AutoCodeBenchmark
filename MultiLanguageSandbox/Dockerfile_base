@@ -1,0 +1,191 @@
+FROM ubuntu:jammy
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y wget curl git unzip zip sudo vim build-essential locales \
+    ca-certificates tzdata apt-transport-https software-properties-common && \
+    ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    locale-gen en_US.UTF-8
+
+# Groovy
+ENV GROOVY_VERSION=4.0.21
+RUN wget https://archive.apache.org/dist/groovy/${GROOVY_VERSION}/distribution/apache-groovy-binary-${GROOVY_VERSION}.zip && \
+    unzip apache-groovy-binary-${GROOVY_VERSION}.zip -d /opt && \
+    ln -s /opt/groovy-${GROOVY_VERSION}/bin/groovy /usr/local/bin/groovy && \
+    rm apache-groovy-binary-${GROOVY_VERSION}.zip
+
+# Swift
+ENV SWIFT_VERSION=5.9.2
+RUN wget https://download.swift.org/swift-${SWIFT_VERSION}-release/ubuntu2204/swift-${SWIFT_VERSION}-RELEASE/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz && \
+    tar -xzf swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz -C /opt && \
+    ln -s /opt/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04/usr/bin/swift /usr/local/bin/swift && \
+    rm swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04.tar.gz
+ENV PATH="/opt/swift-${SWIFT_VERSION}-RELEASE-ubuntu22.04/usr/bin:$PATH"
+
+# Zig
+ENV ZIG_VERSION=0.12.0
+RUN wget https://ziglang.org/download/${ZIG_VERSION}/zig-linux-x86_64-${ZIG_VERSION}.tar.xz && \
+    tar --no-same-owner -xf zig-linux-x86_64-${ZIG_VERSION}.tar.xz -C /opt && \
+    ln -s /opt/zig-linux-x86_64-${ZIG_VERSION}/zig /usr/local/bin/zig && \
+    rm zig-linux-x86_64-${ZIG_VERSION}.tar.xz
+
+# Kotlin
+ENV KOTLIN_VERSION=1.9.24
+RUN curl -L -o kotlin-compiler.zip https://github.com/JetBrains/kotlin/releases/download/v${KOTLIN_VERSION}/kotlin-compiler-${KOTLIN_VERSION}.zip && \
+    unzip kotlin-compiler.zip -d /opt && \
+    ln -s /opt/kotlinc/bin/kotlinc /usr/local/bin/kotlinc && \
+    ln -s /opt/kotlinc/bin/kotlin /usr/local/bin/kotlin && \
+    rm kotlin-compiler.zip
+
+# 安装 Miniconda
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py311_24.5.0-0-Linux-x86_64.sh -O /tmp/miniconda.sh && \
+    bash /tmp/miniconda.sh -b -p /opt/conda && \
+    rm /tmp/miniconda.sh
+ENV PATH="/opt/conda/bin:${PATH}"
+
+RUN /opt/conda/bin/pip config set global.index-url https://mirrors.tencent.com/pypi/simple/ && \
+    /opt/conda/bin/pip config set global.extra-index-url https://mirrors.tencent.com/repository/pypi/tencent_pypi/simple && \
+    /opt/conda/bin/pip config set global.trusted-host mirrors.tencent.com && \
+    /opt/conda/bin/pip install clickhouse-driver
+
+RUN apt-get update && \
+    apt-get install -y php php-xml php-intl erlang elixir ghc emacs dotnet-sdk-8.0 r-base \
+    libicu70 sbcl racket ruby gfortran fpc iptables dnsutils && \
+    PHP_CLI_INI=$(php -i | grep 'Loaded Configuration File' | awk '{print $5}') && \
+    (sed -i 's/^zend.assertions\s*=.*/zend.assertions=1/' "$PHP_CLI_INI" || echo "zend.assertions=1" >> "$PHP_CLI_INI")
+
+# 安装SDKMAN!
+RUN curl -s "https://get.sdkman.io" | bash
+
+ENV SDKMAN_DIR="/root/.sdkman"
+ENV PATH="/root/.sdkman/bin:${PATH}"
+
+# 激活SDKMAN!并安装Scala
+RUN bash -c "source /root/.sdkman/bin/sdkman-init.sh && sdk install scala 3.3.6 && sdk install kotlin 1.9.24"
+
+# Dart
+RUN wget https://storage.googleapis.com/dart-archive/channels/stable/release/latest/sdk/dartsdk-linux-x64-release.zip && \
+    unzip dartsdk-linux-x64-release.zip -d /opt/dart && \
+    rm dartsdk-linux-x64-release.zip
+ENV PATH="/opt/dart/dart-sdk/bin:$PATH"
+
+# Julia
+ENV JULIA_VERSION=1.10.4
+COPY package/julia-1.10.4-linux-x86_64.tar.gz .
+RUN tar --no-same-owner -xzf julia-1.10.4-linux-x86_64.tar.gz -C /opt && \
+    ln -s /opt/julia-${JULIA_VERSION}/bin/julia /usr/local/bin/julia && \
+    rm julia-1.10.4-linux-x86_64.tar.gz
+#RUN wget https://julialang-s3.julialang.org/bin/linux/x64/1.10/julia-${JULIA_VERSION}-linux-x86_64.tar.gz && \
+#    tar -xzf julia-${JULIA_VERSION}-linux-x86_64.tar.gz -C /opt && \
+#    ln -s /opt/julia-${JULIA_VERSION}/bin/julia /usr/local/bin/julia && \
+#    rm julia-${JULIA_VERSION}-linux-x86_64.tar.gz
+
+#powershell
+RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.4.1/powershell-7.4.1-linux-x64.tar.gz && \
+    mkdir -p /opt/microsoft/powershell/7 && \
+    tar -xzf powershell-7.4.1-linux-x64.tar.gz -C /opt/microsoft/powershell/7 && \
+    ln -s /opt/microsoft/powershell/7/pwsh /usr/local/bin/pwsh && \
+    rm powershell-7.4.1-linux-x64.tar.gz
+
+# 安装 nvm 到 /opt/nvm，并用它安装 Node.js 18, js-sandbox用的版本是18.
+ENV NVM_DIR=/opt/nvm
+RUN mkdir -p $NVM_DIR \
+    && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
+    && . "$NVM_DIR/nvm.sh" \
+    && nvm install 18 \
+    && nvm use 18 \
+    && ln -sf $NVM_DIR/versions/node/v18.*/bin/node /usr/local/bin/node \
+    && ln -sf $NVM_DIR/versions/node/v18.*/bin/npm /usr/local/bin/npm \
+    && ln -sf $NVM_DIR/versions/node/v18.*/bin/npx /usr/local/bin/npx
+
+#coffeescript
+RUN npm install -g coffeescript
+ 
+# 切换到iptables-legacy
+RUN update-alternatives --set iptables /usr/sbin/iptables-legacy && \
+    update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy && \
+    useradd -m sandbox
+
+#lua
+RUN wget https://www.lua.org/ftp/lua-5.4.6.tar.gz && \
+    tar zxvf lua-5.4.6.tar.gz && \
+    cd lua-5.4.6 && \
+    make linux test && \
+    make install
+
+#Rust
+USER sandbox
+WORKDIR /home/sandbox
+ENV CARGO_HOME=/home/sandbox/.cargo
+ENV RUSTUP_HOME=/home/sandbox/.rustup
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+# 复制rust的registry到sandbox用户家目录下
+COPY data/registry /home/sandbox/.cargo/registry
+USER root
+
+#R
+ENV LC_CTYPE=C.UTF-8
+
+#复制scala的缓存
+COPY data/scala-cache/coursier /home/sandbox/.cache/coursier
+
+#amm
+RUN wget -O /usr/local/bin/amm https://github.com/com-lihaoyi/Ammonite/releases/download/3.0.1/3.3-3.0.1 && \
+  chmod +x /usr/local/bin/amm
+
+RUN conda install openssl=1.1.1w && \
+    apt-get install -y bc jq openjdk-17-jdk
+
+#cpp沙盒的依赖
+RUN apt-get update && apt-get install -y \
+    gcc-12 \
+    g++-12 \
+    cmake \
+    pkg-config \
+    libc6-dev \
+    libopencv-dev \
+    libomp-dev \
+    libssl-dev \
+    libcurl4-openssl-dev \
+    libsqlite3-dev \
+    zlib1g-dev \
+    libprotobuf-dev \
+    protobuf-compiler \
+    libeigen3-dev \
+    libgtest-dev \
+    libcrypto++-dev \
+    libzip-dev \
+    libgsl-dev \
+    libxml2-dev \
+    libmpdec-dev \
+    pybind11-dev \
+    libboost-all-dev \
+    nlohmann-json3-dev \
+    libjsoncpp-dev \
+    libgmp-dev \
+    libsodium-dev \
+    libglpk-dev 
+
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 100 && \
+    update-alternatives --set gcc /usr/bin/gcc-12 && \
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 120 && \
+    update-alternatives --set g++ /usr/bin/g++-12
+
+# 安装golang
+RUN wget https://go.dev/dl/go1.24.5.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.24.5.linux-amd64.tar.gz && \
+    rm go1.24.5.linux-amd64.tar.gz
+
+ENV PATH="/usr/local/go/bin:$PATH"
+ENV GOPATH=/home/sandbox/go
+COPY conf/go/main.go /home/sandbox/go/init/main.go
+COPY conf/go/go.mod /home/sandbox/go/init/go.mod
+WORKDIR /home/sandbox/go/init
+RUN go mod tidy
+
+
+# 安装junit-platform-console-standalone
+RUN mkdir -p /opt/java_libs && \ 
+    wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.11.4/junit-platform-console-standalone-1.11.4.jar -O /opt/java_libs/junit-platform-console-standalone.jar && \
+    wget https://repo1.maven.org/maven2/org/json/json/20241224/json-20241224.jar -O /opt/java_libs/json.jar && \
+    wget https://repo1.maven.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar -O /opt/java_libs/gson.jar
+ENV CLASSPATH="/opt/java_libs/json.jar:/opt/java_libs/junit-platform-console-standalone.jar:/opt/java_libs/gson.jar:."

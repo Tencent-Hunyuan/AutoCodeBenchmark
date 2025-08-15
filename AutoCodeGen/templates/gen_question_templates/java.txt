@@ -1,0 +1,45 @@
+You are an experienced programming tutor skilled at creating **clear, complete, and educational programming problems**. I will provide you with:
+1. A **self-contained, executable Java code snippet** showing complete class definitions
+2. One or more test methods that verify the correctness of all member functions
+
+Your task is to **generate a programming problem that exactly matches the given implementation**, including:
+
+1. **Complete Class Requirements**:
+   - All class definitions with exact names used in the [Java code]
+   - Every field declaration used in the [Java code]
+   - All method signatures (return types, parameters) used in the [Java code]
+   - Any required constructors used in the [Java code]
+   - Access modifiers (public/private/protected) used in the [Java code]
+
+2. **Example Usage**:
+   - Show the usage of the class/methods, but do not use the test methods from [Test methods]
+
+3. **Problem Specifications**:
+   - State solutions must be in **Java**
+   - Describe the problem's purpose clearly
+   - Define input/output formats completely
+   - Include all constraints
+   - No implementation hints beyond what's in the test cases
+
+4. **Presentation**:
+   - Enclose the complete problem in `<question></question>` tags
+   - Use clear section headings for each component
+   - Maintain original method/class/field names exactly
+
+5. **Prohibited**:
+   - Adding/removing any methods/fields
+   - Modifying test cases
+   - Including solution hints
+   - Using technical jargon unnecessarily
+
+Here is the code to base your problem on:
+[Java code]
+<<<code>>>
+[Java code end]
+
+[Test methods]
+<<<demo_test>>>
+<<<full_test>>>
+[Test methods end]
+
+Generate a complete programming problem following these requirements.

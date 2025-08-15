@@ -1,0 +1,229 @@
+# Code Benchmark Construction Task
+In order to build the code benchmark, I need you to help me create a Python function, as well as two test functions. Later, I will construct programming problems based on them.
+
+## Task Overview
+Given a code file or code snippet in any programming language, your task is to **refine and evolve its core logic** and remove non-core logic (if necessary) to create a **self-contained**, **verifiable**, **correct** Python function. You also need to create two testing functions for testing: `demo_testing()` and `full_testing()`. Below are the detailed requirements:
+
+1. **Separate Code Blocks**: 
+   - Provide **three distinct code blocks**:
+     - One block for the rewritten Python functions that contain the core logic.
+     - Two blocks for the test functions (`demo_testing()` and `full_testing()`).
+   - The three code blocks are wrapped with ```python and ```.
+
+2. **Test Code in `demo_testing()`**: 
+   - This function should contain **no more than 2 test cases**. It will be used to **demonstrate** the input-output format.
+   - For each test case, **hard-code the input values** and print both the input and the corresponding output when `demo_testing()` is executed.
+   - Avoid edge cases in this function, and focus on basic test cases for demonstration purposes.
+
+3. **Test Code in `full_testing()`**: 
+   - This function should include a comprehensive set of **at least 7 test cases**.
+   - These test cases should be designed to thoroughly test the functionality of the converted functions, including:
+     - **Basic cases** (e.g., test cases used in `demo_testing()`).
+     - **Boundary cases** (e.g., minimum/maximum values, empty inputs).
+     - **Edge cases** that test the robustness of the code (e.g., abnormal value, boundary condition checks).
+   - For each test case, **hard-code the input values** and print both the input and the corresponding output when `full_testing()` is executed.
+   - The goal of the test function is to provide comprehensive inputs and call the function being tested to obtain the output. Input handling (e.g., validation, edge cases) should be done by the function itself, not the test.
+
+4. **Use Standard and Third-Party Python Libraries**: 
+   - You are allowed to use standard Python libraries (e.g., `math`, `print`) and third-party libraries (if required) for implementing the core logic.
+   - Ensure that all dependencies are clearly explained in the comments if used.
+
+5. **Executable Code**:
+   - Provide **self-contained and executable Python code** with hard-coded test inputs.
+   - Remove any non-core logic such as plots, file I/O, and unused functions. 
+   - If the original code is not directly executable (e.g., due to dependency on specific business logic or external systems), adapt the code to a self-contained, testable form by simulating the required context or simplifying the logic while preserving the core functionality.
+   - For overly simplistic code (like a function that simply adds two numbers), please evolve its logic to make it more challenging. For overly difficult and complex code (like multiple functions and classes containing multiple core logics that make it hard to test), please simplify its logic to make it moderately challenging.
+
+6. **Code Style and Naming**:
+   - Follow **Pythonic** naming conventions and ensure that function names are **descriptive** and **clear** in conveying their purpose.
+   - Provide **clear and concise comments** explaining the core logic and the purpose of each function, especially the key steps.
+
+
+## Output Requirements  
+
+### 1. Converted Python Functions
+- **Dependencies**: Use standard Python libraries (e.g., math) and third-party libraries when necessary.
+- **Adaptation for Executability**: If the original code depends on external data sources or specific business workflows, modify it to be self-contained by hardcoding inputs, simulating dependencies, or simplifying the logic, while preserving the core algorithm.
+- **Remove Non-Core Logic**: Eliminate all non-essential parts such as plots, file I/O, and unused functions.
+- **Code Style**: Follow good Python coding practices, including proper indentation, consistent naming conventions, and adherence to PEP 8 guidelines. Add comments to explain the functionality of the code and clarify key steps.
+
+### 2. Executable Test Functions
+- **Function Names**: Use `demo_testing()` and `full_testing()` for the test functions.
+- **Inputs**: Hardcode the test inputs within the test functions. Do not pass parameters into the `demo_testing()` or `full_testing()` functions.
+- **Output**: Directly print the test inputs and their corresponding outputs to the console. Ensure that outputs are in JSON-serializable types (e.g., strings, integers, floats, lists). Do not include the word "Output" in the printed results.
+- **Dependencies**: Use standard Python libraries (e.g., math, print) and third-party libraries, if needed, for the core logic.
+- **Testing Adaptation**: If the original code's logic is part of a larger system, adapt the `demo_testing()` and `full_testing()` functions to create a self-contained testing environment. This may include initializing necessary objects, setting up test data, or mocking external interactions.
+- **Code Style**: Follow good Python code style in the test functions, with proper indentation and clarity. Include comments to explain the test setup and key steps in the testing process.
+- **Test Function Format**: The structure and format of `demo_testing()` and `full_testing()` should be identical, with the only difference being the number of test cases.
+
+### 3. Code Structure  
+# Converted Python functions
+```python  
+import math  
+import third_party_library  # Example: If third - party libraries are needed  
+
+# Function to calculate the average of a given list of data  
+# If the list is empty, it returns 0.0 to avoid division by zero error  
+def calculate_average(data):  
+    if len(data) == 0:  
+        return 0.0
+    total = sum(data)  
+    return total / len(data)  
+```
+
+# demo_testing function 
+```python  
+def demo_testing():  
+    # Hard-coded test inputs. We create a list of no more than 2 test cases, where each test case  
+    # is itself a list of numbers to test the calculate_average function.  
+    test_cases = [   
+        [1, 2, 3]
+    ]  
+
+    for input_data in test_cases:  
+        # Print the input data for the current test case  
+        print(f"Input: {input_data}")  
+
+        # Call the calculate_average function with the current input data  
+        result = calculate_average(input_data)  
+
+        # Print the result (average) of the calculation for the current test case  
+        print(f"Mean: {result}")  
+
+if __name__ == "__main__":  
+    demo_testing()  
+```
+
+# full_testing function 
+```python  
+def full_testing():
+    # Hard-coded test inputs. We create a list of at least 7 test cases, where each test case  
+    # is itself a list of numbers to test the calculate_average function.  
+    test_cases = [  
+        [1, 2, 3],
+        [12, 45, 6, 89, 34],
+        [],  # None
+        [5],  # Single - element test case  
+        [-2, 4, -6, 8],  # Test with negative numbers  
+        [0],
+        [999, 999999999, 999999999], # extremum
+        [0.5, 9.8, -9.2, 25365423435], # decimals
+    ]  
+
+    for input_data in test_cases:  
+        # Print the input data for the current test case  
+        print(f"Input: {input_data}")  
+
+        # Call the calculate_average function with the current input data  
+        result = calculate_average(input_data)  
+
+        # Print the result (average) of the calculation for the current test case  
+        print(f"Mean: {result}")  
+
+if __name__ == "__main__":  
+    full_testing()  
+```  
+
+#### 4. Key Rules  
+- **No external inputs**: All test parameters should be hard-coded in the demo_testing or full_testing function.  
+- **No complex types**: Use lists for arrays and primitive types for scalars.  
+- **No boilerplate**: Remove comments, unused code, and non-essential logic from the original code (but add appropriate comments in the generated Python code as per the requirements).
+- **No randomness**: The code must not rely on any random values or functions. Ensure that all inputs and outputs are predictable and consistent every time the code is executed. Also, ensure that numerical calculation results do not vary across machines and environments.
+- **Direct execution**: The code must run with `python main.py`, possibly requiring `pip install` for any third-party dependencies specified in the code.
+
+
+### Example Conversion  
+**Original Code** (in any programming language, here a hypothetical example using Pandas):  
+```python
+import pandas as pd  
+def analyze_data(df):  
+    return df.mean(), df.std()  
+data = pd.DataFrame([1, 2, 3, 4])  
+print(analyze_data(data))  # Output: (2.5, 1.118...)  
+```  
+
+**Converted Python Code**:  
+```python  
+import pandas as pd
+import numpy as np
+
+# Function to perform multiple statistical analyses on a DataFrame
+def analyze_data(df):
+    # Check if the DataFrame is empty
+    if df.empty:
+        return "Error: Empty DataFrame"
+
+    # Check if all values are numeric (useful for validation)
+    if not pd.api.types.is_numeric_dtype(df.iloc[:, 0]):
+        return "Error: Non-numeric data"
+
+    # Calculate statistics: mean, standard deviation
+    mean = df.mean().values[0]
+    std = df.std().values[0]
+
+    # Return the results as a dictionary
+    return {
+        "mean": mean,
+        "std_dev": std,
+    }
+```  
+
+**Demo Testing Function**:  
+```python  
+def demo_testing():
+    # Hard-coded test cases for demonstration
+    test_cases = [
+        pd.DataFrame([1, 2, 3, 4]),  # Test case 1: A simple list of numbers
+    ]
+
+    for input_data in test_cases:
+        # Print the input data for the current test case
+        print(f"Input: {input_data}")
+
+        # Call the analyze_data function with the current input data
+        result = analyze_data(input_data)
+
+        # Print the result of the analysis
+        print(f"Analysis Result: {result}")
+
+if __name__ == "__main__":
+    demo_testing()
+```
+
+**Full Testing Function**:  
+```python
+def full_testing():
+    # Hard-coded test cases with a variety of conditions
+    test_cases = [
+        pd.DataFrame([1, 2, 3, 4]),  # Test case 1: Simple sequence of numbers
+        pd.DataFrame([12, 45, 6, 89, 34]),  # Test case 2: Larger set of numbers
+        pd.DataFrame([5]),  # Test case 3: Single value
+        pd.DataFrame([]),  # Test case 4: Empty DataFrame
+        pd.DataFrame([1, -1, 1, -1]),  # Test case 5: Mixed positive and negative numbers
+        pd.DataFrame([0, 0, 0, 0]),  # Test case 6: All zeros
+        pd.DataFrame([999999, 1000000, 1000001]),  # Test case 7: Large numbers
+        pd.DataFrame([100, 200, 300, 400]),  # Test case 8: Even larger set of numbers
+        pd.DataFrame(['a', 'b', 'c']),  # Test case 9: Non-numeric data
+    ]
+
+    for input_data in test_cases:
+        # Print the input data for the current test case
+        print(f"Input: {input_data}")
+
+        # Call the analyze_data function with the current input data
+        result = analyze_data(input_data)
+
+        # Print the result of the analysis
+        print(f"Analysis Result: {result}")
+
+if __name__ == "__main__":
+    full_testing()
+
+```  
+
+
+
+Here is the code file you need to process:
+[Code Start]
+<<<<code>>>>
+[Code End]

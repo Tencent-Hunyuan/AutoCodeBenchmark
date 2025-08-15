@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vOnuM1o8MAE8cNpfZ3ifE9BlCsmJhivLY6i+DLSbr9bwKFdln69wxI3Z3D8uTRkA71QZMcNx/gs+Yz5jtRW0LQ==",
+  "success": true,
+  "projectFilePath": "/data/codes/c#/dotnet/f#/MyProject/MyProject.fsproj",
+  "expectedPackageFiles": [
+    "/root/.nuget/packages/fsharp.core/8.0.100/fsharp.core.8.0.100.nupkg.sha512"
+  ],
+  "logs": []
+}
