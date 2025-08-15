@@ -117,7 +117,7 @@ python3 src/build_msg_for_translation.py \
 ```
 
 ```python
-python3 src/taiji_api.py \
+python3 src/call_api.py \
     --input data/translations/julia_msg.jsonl \
     --output data/translations/julia_output.jsonl
 ```
