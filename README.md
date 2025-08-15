@@ -62,7 +62,20 @@ Previous benchmarks mainly focused on Python, with multilingual benchmarks like 
 </div>
 
 
-## Data Description
+## Data
+
+<div align="center">
+
+| **Dataset** |  **Download** |
+| :------------: | :------------: |
+| AutoCodeBench  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench.jsonl)   |
+| AutoCodeBench-Lite  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench_lite.jsonl)    |
+| McEval-Instruct  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench_completion_3shot.jsonl)    |
+
+</div>
+
+
+
 
 <div align="center">
   <img src="figures/acb.png" width="85%">
@@ -76,9 +89,6 @@ Field Descriptions:
 - language: The programming language used.
 - difficulty: easy/medium/hard
 
-**System Prompt**: `You are an expert programmer. Your task is to provide a code solution within a single Markdown code block for the given programming problem. Do not include any direct execution commands, test cases, or usage examples within the code block.`
-
-
 
 ## Evaluation
 
@@ -86,6 +96,10 @@ Field Descriptions:
 You can use your model to perform inference based on the "question" field in the `autocodebench.jsonl` file and the system prompt, and save the model's output in the "output" field.
 
 An example of using VLLM for infernece can be found in the file `run_vllm.sh`.
+
+> **System Prompt**: `You are an expert programmer. Your task is to provide a code solution within a single Markdown code block for the given programming problem. Do not include any direct execution commands, test cases, or usage examples within the code block.`
+
+
 
 
 ### 2. Pull the sandbox image
