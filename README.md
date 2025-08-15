@@ -34,35 +34,40 @@ Existing code generation benchmarks typically rely on manual annotations, which 
 
 ## AutoCodeGen
 <div align="center">
-  <img src="figures/autocodegen.png" width="65%">
+  <img src="figures/autocodegen.png" width="85%">
 </div>
 
 ## AutoCodeBench
 <div align="center">
-  <img src="figures/bench_comp.png" width="65%">
+  <img src="figures/bench_comp.png" width="85%">
 </div>
 
 Previous benchmarks mainly focused on Python, with multilingual benchmarks like Fullstackbench and McEval suffering from imbalanced language and category distributions, and overly simple difficulty. In contrast, AutoCodeBench is a high-difficulty multilingual benchmark with balanced language and category distributions to better assess models' multilingual capabilities.
 
 <div align="center">
-  <img src="figures/distribution_comp.png" width="65%">
+  <img src="figures/distribution_comp.png" width="85%">
 </div>
 
 
 ## Experimental Results
 
 <div align="center">
-  <img src="figures/exp_acb.png" width="65%">
+  <img src="figures/exp_acb.png" width="85%">
 </div>
 <div align="center">
-  <img src="figures/exp_acb-lite.png" width="65%">
+  <img src="figures/exp_acb-lite.png" width="85%">
 </div>
 <div align="center">
-  <img src="figures/exp_acb-comp.png" width="65%">
+  <img src="figures/exp_acb-comp.png" width="85%">
 </div>
 
 
 ## Data Description
+
+<div align="center">
+  <img src="figures/acb.png" width="85%">
+</div>
+
 Field Descriptions:
 - question: The programming problem.
 - canonical_solution: The code solution.
