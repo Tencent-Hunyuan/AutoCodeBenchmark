@@ -1,4 +1,10 @@
+<div align="center">
+
 # 多语言代码沙盒服务
+
+**腾讯混元**
+
+</div>
 
 一个安全、高性能的多语言代码执行沙盒服务，支持30+种编程语言的代码编译和执行。
 
@@ -124,7 +130,7 @@
 ### 1. 拉取镜像
 
 ```bash
-docker pull your-registry/multi-language-sandbox:latest
+docker pull hunyuansandbox/multi-language-sandbox:v1
 ```
 
 ### 2. 启动服务
@@ -133,7 +139,7 @@ docker run -d \
   --name sandbox-service \
   -p 8080:8080 \
   --cap-add=NET_ADMIN \
-  your-registry/multi-language-sandbox:latest
+  hunyuansandbox/multi-language-sandbox:v1
 ```
 
 ### 3. 验证服务

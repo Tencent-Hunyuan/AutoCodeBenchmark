@@ -19,16 +19,18 @@
 
 ## Introduction
 
-Existing code generation benchmarks often rely on manual annotations, which are time-consuming and difficult to scale across different programming languages and problem complexities. Besides, most benchmarks focus primarily on Python, while the few multilingual benchmarks suffer from limited difficulty and uneven language distribution. In this work, we propose:
+Existing code generation benchmarks typically rely on manual annotations, which are not only time-consuming but also challenging to scale across diverse programming languages and varying problem complexities. Furthermore, most existing benchmarks predominantly focus on Python, while the limited number of multilingual benchmarks suffer from insufficient difficulty levels and imbalanced language distribution. To address these limitations, we propose the following comprehensive solution:
 
-**AutoCodeGen**. An automated workflow based on LLM-Sandbox Interaction, where *LLMs generate test inputs and obtain test outputs through the sandbox*, to create high-quality code generation benchmarks. Worth mentioning is that this workflow can also be applied to
-synthesize high-quality training data.
+**AutoCodeGen**: An innovative automated workflow leveraging LLM-Sandbox Interaction, where *LLMs dynamically generate test inputs and obtain corresponding test outputs through the sandbox environment*, enabling the creation of high-quality, scalable code generation datasets.
 
-**AutoCodeBench**. A large-scale code generation benchmark with 3,920 problems, evenly distributed across 20 programming languages. It features high difficulty, practicality, and diversity, and is designed to measure the absolute multilingual performance of models.
+**AutoCodeBench**: A comprehensive, large-scale code generation benchmark comprising 3,920 carefully curated problems, featuring balanced distribution across 20 programming languages. This benchmark is characterized by its high difficulty levels, practical relevance, and linguistic diversity.
 
-**AutoCodeBench-Lite**. Based on the evaluation results of 30+ open-source and closed-source models on AutoCodeBench, we select 1,586 problems that were successfully solved by at least two models. This simplified subset, AutoCodeBench-Lite, is used to measure performance differences between models.
+**AutoCodeBench-Lite**: Derived from extensive evaluation of over 30 open-source and closed-source models on AutoCodeBench, this refined subset contains 1,586 problems that demonstrate consistent solvability, having been successfully addressed by at least two different models.
 
-**AutoCodeBench-Complete**. We select 1,000 problems from AutoCodeBench-Lite and use 3-shot prompting to construct AutoCodeBench-Complete, a completion-style code generation benchmark designed to assess the performance of base models.
+**AutoCodeBench-Complete**: Constructed from 1,000 selected problems from AutoCodeBench-Lite, this benchmark employs 3-shot prompting to create a completion-style code generation assessment framework specifically designed to evaluate the performance capabilities of base models.
+
+**MultiLanguageSandbox**: A robust, secure, and high-performance multi-language code execution sandbox service that provides comprehensive support for compilation and execution across more than 30 programming languages.
+
 
 ## AutoCodeGen
 <div align="center">

@@ -1,4 +1,12 @@
+<div align="center">
+
 # Multi-Language Code Sandbox Service
+
+**Hunyuan Team, Tencent**
+
+</div>
+
+
 
 A secure, high-performance multi-language code execution sandbox service that supports compilation and execution of 30+ programming languages.
 
@@ -124,7 +132,7 @@ A secure, high-performance multi-language code execution sandbox service that su
 ### 1. Pull Image
 
 ```bash
-docker pull hunyuansandbox/multi-language-sandbox:latest
+docker pull hunyuansandbox/multi-language-sandbox:v1
 ```
 
 ### 2. Start Service
@@ -133,7 +141,7 @@ docker run -d \
   --name sandbox-service \
   -p 8080:8080 \
   --cap-add=NET_ADMIN \
-  hunyuansandbox/multi-language-sandbox:latest
+  hunyuansandbox/multi-language-sandbox:v1
 ```
 
 ### 3. Verify Service
@@ -333,3 +341,19 @@ docker logs sandbox-service
 docker exec sandbox-service tail -f /data/logs/sandbox.log
 ```
 
+
+## Citation
+
+If you find our project helpful, please cite:
+
+```bibtex
+@misc{chou2025autocodebenchlargelanguagemodels,
+      title={AutoCodeBench: Large Language Models are Automatic Code Benchmark Generators}, 
+      author={Jason Chou and Ao Liu and Yuchi Deng and Zhiying Zeng and Tao Zhang and Haotian Zhu and Jianwei Cai and Yue Mao and Chenchen Zhang and Lingyun Tan and Ziyan Xu and Bohui Zhai and Hengyi Liu and Speed Zhu and Wiggin Zhou and Fengzong Lian},
+      year={2025},
+      eprint={2508.09101},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2508.09101}, 
+}
+```
