@@ -35,11 +35,10 @@ Existing code generation benchmarks typically rely on manual annotations, which 
 
 **AutoCodeGen**: An innovative automated workflow leveraging LLM-Sandbox Interaction, where *LLMs dynamically generate test inputs and obtain corresponding test outputs through the sandbox environment*, enabling the creation of high-quality, scalable code generation datasets.
 
-**AutoCodeBench**: A comprehensive, large-scale code generation benchmark comprising 3,920 carefully curated problems, featuring balanced distribution across 20 programming languages. This benchmark is characterized by its high difficulty levels, practical relevance, and linguistic diversity.
-
-**AutoCodeBench-Lite**: Derived from extensive evaluation of over 30 open-source and closed-source models on AutoCodeBench, this refined subset contains 1,586 problems that demonstrate consistent solvability, having been successfully addressed by at least two different models.
-
-**AutoCodeBench-Complete**: Constructed from 1,000 selected problems from AutoCodeBench-Lite, this benchmark employs 3-shot prompting to create a completion-style code generation assessment framework specifically designed to evaluate the performance capabilities of base models.
+**AutoCodeBench**: 
+- **ACB-Full**: A comprehensive, large-scale code generation benchmark comprising 3,920 carefully curated problems, featuring balanced distribution across 20 programming languages. This benchmark is characterized by its high difficulty levels, practical relevance, and linguistic diversity.
+- **ACB-Lite**: Derived from extensive evaluation of over 40 models on ACL-Full, this refined subset contains 1,586 problems that demonstrate consistent solvability, having been successfully addressed by at least two different models.
+- **ACB-Complete**: Constructed from 1,000 selected problems from ACB-Lite, this benchmark employs 3-shot prompting to create a completion-style code generation assessment framework specifically designed to evaluate the performance capabilities of base models.
 
 **MultiLanguageSandbox**: A robust, secure, and high-performance multi-language code execution sandbox service that provides comprehensive support for compilation and execution across more than 30 programming languages.
 
@@ -61,6 +60,14 @@ Previous benchmarks mainly focused on Python, with multilingual benchmarks like 
 </div>
 
 
+## Leaderboard
+
+<div align="center">
+  <img src="figures/leaderboard_acb-lite.png" width="85%">
+</div>
+
+
+
 ## Experimental Results
 
 <div align="center">
@@ -80,7 +87,7 @@ Previous benchmarks mainly focused on Python, with multilingual benchmarks like 
 
 | **Dataset** |  **Download** |
 | :------------: | :------------: |
-| AutoCodeBench  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench.jsonl)   |
+| AutoCodeBench-Full  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench.jsonl)   |
 | AutoCodeBench-Lite  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench_lite.jsonl)    |
 | AutoCodeBench-Complete  | [🤗 HuggingFace](https://huggingface.co/datasets/tencent/AutoCodeBenchmark/blob/main/autocodebench_completion_3shot.jsonl)    |
 
@@ -111,7 +118,7 @@ An example of using VLLM for infernece can be found in the file `run_vllm.sh`.
 
 > **System Prompt**: `You are an expert programmer. Your task is to provide a code solution within a single Markdown code block for the given programming problem. Do not include any direct execution commands, test cases, or usage examples within the code block.`
 
-
+> **ACB-Complete Evaluation**: For the evaluation of Autocodebench_completion_3shot.jsonl, we used the following prompt: `system_prompt + "\n\n" + question + "\n\n[Code Solution]\n"`
 
 
 ### 2. Pull the sandbox image
