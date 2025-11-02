@@ -25,7 +25,7 @@ for model in "${MODELS[@]}"; do
         bs=6
     fi
 
-    python3 vllm_offline.py \
+    python3 vllm_offline_base.py \
         --task $task \
         --model_path $model \
         --output_file $model_name.jsonl \
