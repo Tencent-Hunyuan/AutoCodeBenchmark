@@ -114,7 +114,7 @@ Field Descriptions:
 ### 1. Prepare a file `model_output.jsonl`
 You can use your model to perform inference based on the "question" field in the `autocodebench.jsonl` file and the system prompt, and save the model's output in the "output" field.
 
-An example of using VLLM for infernece can be found in the file `run_vllm.sh`.
+An example of using VLLM==0.8.5 for infernece can be found in the folder `Inference`.
 
 > **System Prompt**: `You are an expert programmer. Your task is to provide a code solution within a single Markdown code block for the given programming problem. Do not include any direct execution commands, test cases, or usage examples within the code block.`
 
