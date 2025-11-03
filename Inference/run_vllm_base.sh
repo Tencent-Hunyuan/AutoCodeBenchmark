@@ -39,5 +39,5 @@ done
 done
 
 # enable_thinking
-# python3 vllm_offline.py --task python --model_path /apdcephfs_jn/share_302867151/yeszhou/llms/Qwen/Qwen3-8B --output_file outputs/qwen3-8b-nothink/$task.jsonl --n 1 --max_tokens 8192 --batch_size 64 --enable_thinking
+# python3 vllm_offline.py --task python --model_path Qwen/Qwen3-8B --output_file outputs/qwen3-8b-nothink/$task.jsonl --n 1 --max_tokens 8192 --batch_size 64 --enable_thinking
 
